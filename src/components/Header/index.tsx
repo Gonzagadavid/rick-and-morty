@@ -2,6 +2,7 @@ import { AppBar, Avatar, IconButton } from '@mui/material';
 import { FC } from 'react';
 import logo from 'images/Daco_4305710.png';
 import { Menu } from '@mui/icons-material';
+import { SwitchTheme } from 'components/SwitchTheme';
 import { styles } from './styles';
 
 interface HeaderProps {
@@ -14,5 +15,6 @@ export const Header: FC<HeaderProps> = () => (
       <Menu sx={styles.icon} />
     </IconButton>
     <Avatar src={logo} sx={styles.logo} variant="square" />
+    <SwitchTheme />
   </AppBar>
 );

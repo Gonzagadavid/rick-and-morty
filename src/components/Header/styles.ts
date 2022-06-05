@@ -6,7 +6,8 @@ export const styles = {
     flexDirection: 'row',
     height: (theme: Theme) => theme.percent(3.5),
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
+    padding: (theme: Theme) => theme.spacing([0, 5]),
   },
   logo: {
     width: (theme: Theme) => theme.spacing([95]),
@@ -16,8 +17,6 @@ export const styles = {
     height: (theme: Theme) => theme.spacing([15]),
     width: (theme: Theme) => theme.spacing([15]),
     fontSize: (theme: Theme) => theme.spacing([15]),
-    position: 'absolute',
-    left: (theme: Theme) => theme.spacing([8]),
   },
   icon: {
     fontSize: (theme: Theme) => theme.spacing([10]),

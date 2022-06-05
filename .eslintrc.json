@@ -13,7 +13,7 @@
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": 12,
+        "ecmaVersion": 2020,
         "sourceType": "module"
     },
     "plugins": [
@@ -33,12 +33,7 @@
             }
         ],
         "react/jsx-props-no-spreading": "off",
-        "no-unused-vars": [
-            "error",
-            {
-                "argsIgnorePattern": "^_"
-            }
-        ],
+        "no-unused-vars":"off",
         "react/jsx-no-constructed-context-values": "off",
         "@typescript-eslint/no-unused-vars": [
             "error",
@@ -60,7 +55,9 @@
         "react/function-component-definition": "off",
         "react/react-in-jsx-scope": "off",
         "import/prefer-default-export": "off",
-        "import/no-unresolved": "off"
+        "import/no-unresolved": "off",
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": ["off"]
     },
     "settings": {
         "import/resolver": {
