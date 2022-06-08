@@ -1,5 +1,5 @@
 import { DarkMode, LightMode } from '@mui/icons-material';
-import { Box, Switch } from '@mui/material';
+import { Box, IconButton } from '@mui/material';
 import { Context, SelectedTheme } from 'context/Provider';
 import { useContext, useMemo } from 'react';
 import { styles } from './styles';
@@ -14,8 +14,10 @@ export const SwitchTheme = () => {
 
   return (
     <Box sx={styles.container}>
-      {icon}
-      <Switch onChange={changeTheme} sx={styles.select} />
+      <IconButton onClick={changeTheme}>
+        {icon}
+      </IconButton>
+      {/* <Switch onChange={changeTheme} sx={styles.select} /> */}
     </Box>
   );
 };

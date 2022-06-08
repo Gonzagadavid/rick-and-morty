@@ -1,12 +1,19 @@
 import {
-  ChangeEvent,
-  createContext, FC, ReactNode, useCallback, useMemo, useState,
+  createContext, FC, MouseEvent, ReactNode, useCallback, useMemo, useState,
 } from 'react';
 import { darkTheme, lightTheme } from 'theme/theme';
 import { ThemeProvider } from '@mui/material';
+// import { ApolloProvider } from '@apollo/client';
+// import { client } from 'graphql';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+
+export const client = new ApolloClient({
+  uri: 'https://rickandmortyapi.com/graphql',
+  cache: new InMemoryCache(),
+});
 
 type ContextType = {
-  changeTheme: (event: ChangeEvent) => void,
+  changeTheme: (event: MouseEvent) => void,
   selectedTheme: string
 }
 
@@ -30,9 +37,11 @@ export const Provider: FC<ProviderProps> = ({ children }) => {
   const context = useMemo(() => ({ selectedTheme, changeTheme }), [selectedTheme, changeTheme]);
   return (
     <Context.Provider value={context}>
-      <ThemeProvider theme={selectedTheme === SelectedTheme.LIGHT ? lightTheme : darkTheme}>
-        {children}
-      </ThemeProvider>
+      <ApolloProvider client={client}>
+        <ThemeProvider theme={selectedTheme === SelectedTheme.LIGHT ? lightTheme : darkTheme}>
+          {children}
+        </ThemeProvider>
+      </ApolloProvider>
     </Context.Provider>
   );
 };

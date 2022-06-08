@@ -1,11 +1,12 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import { Layout } from 'Layout';
+import { Characters } from 'pages/Characters';
 
 function App() {
   return (
     <Layout>
       <Box>
-        <Typography>TESTE</Typography>
+        <Characters />
       </Box>
     </Layout>
   );
