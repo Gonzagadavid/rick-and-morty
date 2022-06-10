@@ -57,7 +57,8 @@
         "import/prefer-default-export": "off",
         "import/no-unresolved": "off",
         "no-shadow": "off",
-        "@typescript-eslint/no-shadow": ["off"]
+        "@typescript-eslint/no-shadow": ["off"],
+        "react/no-unused-prop-types": "off"
     },
     "settings": {
         "import/resolver": {
