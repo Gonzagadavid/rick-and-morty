@@ -27,11 +27,15 @@ export const Characters:FC = () => {
   }, [dataResult]);
   if (error) return <p>error</p>;
   if (!data) return null;
+
   const handlePage = (_event: ChangeEvent<unknown>, page: number) => {
     setPageNumber(page);
   };
+
   const { characters: { results, info: { pages } } } = data;
+
   useLoading(loading);
+
   return (
     <Box sx={styles.container}>
       {results.map(({ name, image, id }: CharacterType) => (

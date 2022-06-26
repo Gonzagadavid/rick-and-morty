@@ -13,3 +13,5 @@ export const CardComponent: FC<CardProps> = ({ name, image }) => (
     <Typography sx={styles.name}>{name}</Typography>
   </Paper>
 );
+
+export default CardComponent;
