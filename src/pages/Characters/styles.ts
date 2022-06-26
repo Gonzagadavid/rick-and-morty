@@ -4,8 +4,8 @@ export const styles = {
   container: {
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'space-around',
     flexWrap: 'wrap',
-    background: 'blue',
-    width: (theme: Theme) => theme.percent(16),
+    width: (theme: Theme) => theme.percent(25),
   },
 };
