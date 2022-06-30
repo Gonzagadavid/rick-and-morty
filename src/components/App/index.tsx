@@ -1,12 +1,12 @@
 import { Box } from '@mui/material';
 import { Layout } from 'Layout';
-import { Characters } from 'pages/Characters';
+import { RoutersComponent } from 'routes';
 
 function App() {
   return (
     <Layout>
       <Box>
-        <Characters />
+        <RoutersComponent />
       </Box>
     </Layout>
   );
