@@ -1,7 +1,7 @@
 import { FC, lazy, Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-export const RouteNames = {
+export const RouteNames:{[key:string]: string} = {
   HOME: '/',
   CHARACTERS: '/characters',
 };
