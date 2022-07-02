@@ -4,10 +4,10 @@ export const styles = {
   container: {
     display: 'flex',
     flexDirection: 'row',
-    height: (theme: Theme) => theme.percent(3.5),
+    height: '15vh',
     alignItems: 'center',
     justifyContent: 'space-between',
-    padding: (theme: Theme) => theme.spacing([0, 5]),
+    padding: (theme: Theme) => theme.spacing([0, 10]),
   },
   logo: {
     width: (theme: Theme) => theme.spacing([95]),

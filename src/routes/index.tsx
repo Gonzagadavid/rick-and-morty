@@ -1,5 +1,5 @@
 import { FC, lazy, Suspense } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 export const RouteNames:{[key:string]: string} = {
   HOME: '/',
@@ -15,13 +15,11 @@ const lazyRoutes = Object.entries(routes)
   .map(([route, component]) => ({ route, component: lazy(() => component) }));
 
 export const RoutersComponent: FC = () => (
-  <BrowserRouter>
-    <Suspense>
-      <Routes>
-        {lazyRoutes.map(({ route, component: Component }) => (
-          <Route path={route} element={<Component />} />
-        ))}
-      </Routes>
-    </Suspense>
-  </BrowserRouter>
+  <Suspense>
+    <Routes>
+      {lazyRoutes.map(({ route, component: Component }) => (
+        <Route key={route} path={route} element={<Component />} />
+      ))}
+    </Routes>
+  </Suspense>
 );

@@ -2,6 +2,7 @@ import { createTheme } from '@mui/material';
 
 declare module '@mui/material/styles' {
   interface ThemeOptions {
+    image: string,
     spacing: (_values: Array<number>) => string,
     shape: {
       borderRadius: number,
@@ -9,6 +10,7 @@ declare module '@mui/material/styles' {
     percent: (_value: number) => string
   }
   interface Theme {
+    image: string,
     spacing: (_values: number[]) => string,
     shape: {
       borderRadius: number,
@@ -18,6 +20,7 @@ declare module '@mui/material/styles' {
 }
 
 export const lightTheme = createTheme({
+  image: 'transparent',
   palette: {
     mode: 'light',
     primary: {
@@ -30,6 +33,7 @@ export const lightTheme = createTheme({
       default: '#e0f7fa',
       paper: '#b2ebf2',
     },
+
   },
   typography: {
     fontFamily: 'Julius Sans One',
@@ -60,6 +64,7 @@ export const lightTheme = createTheme({
 });
 
 export const darkTheme = createTheme({
+  image: '#00f53f',
   palette: {
     mode: 'dark',
     primary: {

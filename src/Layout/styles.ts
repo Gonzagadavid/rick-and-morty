@@ -2,14 +2,17 @@ import { Theme } from '@mui/material';
 
 export const styles = {
   container: {
-    height: (theme: Theme) => theme.percent(25),
-    width: (theme: Theme) => theme.percent(25),
     background: (theme: Theme) => theme.palette.background.default,
-    paddingTop: (theme: Theme) => theme.percent(2.6),
+    paddingTop: '16vh',
     display: 'flex',
     alignItems: 'center',
+    flex: 1,
+    flexDirection: 'column',
+    minHeight: '84vh',
   },
   content: {
-    // background: 'red',
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
   },
 };
