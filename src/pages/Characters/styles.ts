@@ -4,8 +4,15 @@ export const styles = {
   container: {
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'center',
+    width: (theme: Theme) => theme.percent(25),
+  },
+  cardContainer: {
+    display: 'flex',
+    alignItems: 'center',
     justifyContent: 'space-around',
     flexWrap: 'wrap',
-    width: (theme: Theme) => theme.percent(25),
+    paddingBottom: (theme: Theme) => theme.spacing([20]),
+    width: (theme: Theme) => theme.percent(24),
   },
 };

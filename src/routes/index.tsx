@@ -1,3 +1,4 @@
+import { Loading } from 'components/Loading';
 import { FC, lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
@@ -15,7 +16,7 @@ const lazyRoutes = Object.entries(routes)
   .map(([route, component]) => ({ route, component: lazy(() => component) }));
 
 export const RoutersComponent: FC = () => (
-  <Suspense>
+  <Suspense fallback={<Loading />}>
     <Routes>
       {lazyRoutes.map(({ route, component: Component }) => (
         <Route key={route} path={route} element={<Component />} />

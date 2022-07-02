@@ -3,7 +3,7 @@ import { Box } from '@mui/material';
 import { CardComponent } from 'components/Card';
 import { Pagination } from 'components/Pagination';
 import { CHARATERS } from 'graphql/getCharacters';
-import { useLoading } from 'hooks/useLoading';
+// import { useLoading } from 'hooks/useLoading';
 import {
   ChangeEvent, FC, useMemo, useRef, useState,
 } from 'react';
@@ -26,23 +26,22 @@ export const Characters:FC = () => {
     return dataRef.current;
   }, [dataResult]);
   if (error) return <p>error</p>;
-  if (!data) return null;
 
   const handlePage = (_event: ChangeEvent<unknown>, page: number) => {
     setPageNumber(page);
   };
 
-  const { characters: { results, info: { pages } } } = data;
-
-  useLoading(loading);
+  const cards = useMemo(() => (
+    data ? data?.characters?.results.map(({ name, image, id }: CharacterType) => (
+      <CardComponent name={name} image={image} key={id} />
+    )) : null
+  ), [data]);
 
   return (
     <Box sx={styles.container}>
-      {results.map(({ name, image, id }: CharacterType) => (
-        <CardComponent name={name} image={image} key={id} />
-      ))}
+      <Box sx={styles.cardContainer}>{cards}</Box>
       <Pagination
-        count={pages}
+        count={data?.characters?.info?.pages}
         page={pageNumber}
         onChange={handlePage}
       />

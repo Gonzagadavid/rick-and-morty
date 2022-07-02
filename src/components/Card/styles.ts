@@ -3,9 +3,9 @@ import { Theme } from '@mui/material';
 export const styles = {
   card: {
     background: (theme: Theme) => theme.palette.background.paper,
-    width: (theme: Theme) => theme.spacing([80]),
-    height: (theme: Theme) => theme.spacing([120]),
-    margin: (theme: Theme) => theme.spacing([2]),
+    width: (theme: Theme) => theme.spacing([70]),
+    height: (theme: Theme) => theme.spacing([110]),
+    margin: (theme: Theme) => theme.spacing([4]),
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
