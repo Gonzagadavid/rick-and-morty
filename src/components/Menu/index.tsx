@@ -15,16 +15,16 @@ interface MenuProps {
 
 export const Menu: FC<MenuProps> = ({ open, onClose }) => (
   <Drawer open={open} onClose={onClose} sx={styles.drawer}>
+    <IconButton
+      sx={styles.close}
+      onClick={onClose}
+    >
+      <Close />
+    </IconButton>
+    <Avatar src={logo} sx={styles.avatar} />
     <List sx={styles.container}>
-      <IconButton
-        sx={styles.close}
-        onClick={onClose}
-      >
-        <Close />
-      </IconButton>
-      <Avatar src={logo} sx={styles.avatar} />
       {Object.keys(RouteNames).map((route) => (
-        <ListItem key={route} onClick={onClose}>
+        <ListItem sx={styles.listItem} key={route} onClick={onClose}>
           <Link to={RouteNames[route]}>{route}</Link>
         </ListItem>
       ))}
