@@ -3,6 +3,7 @@ import { Theme } from '@mui/material';
 export const styles = {
   container: {
     display: 'flex',
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
     width: (theme: Theme) => theme.percent(25),
