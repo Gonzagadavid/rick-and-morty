@@ -9,12 +9,12 @@ export const styles = {
   },
   text: {
     fontFamily: (theme: Theme) => theme.typography.h4,
-    color: (theme: Theme) => theme.palette.primary.main,
+    color: (theme: Theme) => theme.palette.text.primary,
     position: 'absolute',
     left: 0,
     top: (theme: Theme) => theme.percent(10),
     zIndex: 2,
-    textShadow: '0px 0px 5px white',
+    textShadow: (theme: Theme) => `0px 0px 5px ${theme.palette.background.paper}`,
   },
   avatar: {
     width: (theme: Theme) => theme.spacing([60]),
