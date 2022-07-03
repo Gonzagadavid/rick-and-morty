@@ -28,7 +28,7 @@ export enum SelectedTheme {
 }
 
 export const Provider: FC<ProviderProps> = ({ children }) => {
-  const [selectedTheme, setTheme] = useState <SelectedTheme>(SelectedTheme.LIGHT);
+  const [selectedTheme, setTheme] = useState <SelectedTheme>(SelectedTheme.DARK);
 
   const changeTheme = useCallback(() => {
     setTheme((prev) => (prev === SelectedTheme.LIGHT ? SelectedTheme.DARK : SelectedTheme.LIGHT));
