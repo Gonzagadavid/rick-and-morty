@@ -3,8 +3,6 @@ import {
 } from 'react';
 import { darkTheme, lightTheme } from 'theme/theme';
 import { ThemeProvider } from '@mui/material';
-// import { ApolloProvider } from '@apollo/client';
-// import { client } from 'graphql';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 export const client = new ApolloClient({

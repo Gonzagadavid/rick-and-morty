@@ -16,7 +16,7 @@ const lazyRoutes = Object.entries(routes)
   .map(([route, component]) => ({ route, component: lazy(() => component) }));
 
 export const RoutersComponent: FC = () => (
-  <Suspense fallback={<Loading />}>
+  <Suspense fallback={<Loading paged />}>
     <Routes>
       {lazyRoutes.map(({ route, component: Component }) => (
         <Route key={route} path={route} element={<Component />} />

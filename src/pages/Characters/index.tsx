@@ -5,6 +5,7 @@ import { Pagination } from 'components/Pagination';
 import { SearchBar } from 'components/SearchBar';
 import { EMPTY } from 'constants/strings';
 import { CHARATERS } from 'graphql/getCharacters';
+import { useLoading } from 'hooks/useLoading';
 
 import {
   ChangeEvent, FC, useCallback, useMemo, useRef, useState,
@@ -49,6 +50,7 @@ export const Characters:FC = () => {
     )) : null
   ), [data]);
 
+  useLoading(loading);
   return (
     <Box sx={styles.container}>
       <SearchBar handleFilter={handleFilter} />
