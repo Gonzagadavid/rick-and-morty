@@ -4,7 +4,7 @@ import { CardComponent } from 'components/Card';
 import { Pagination } from 'components/Pagination';
 import { SearchBar } from 'components/SearchBar';
 import { EMPTY } from 'constants/strings';
-import { CHARATERS } from 'graphql/getCharacters';
+import { CHARATERS } from 'services/graphql/getCharacters';
 import { useLoading } from 'hooks/useLoading';
 
 import {
