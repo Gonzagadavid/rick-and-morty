@@ -1,29 +1,27 @@
 import { useQuery } from '@apollo/client';
-import { Box } from '@mui/material';
-import { CardComponent } from 'components/Card';
-import { Pagination } from 'components/Pagination';
-import { SearchBar } from 'components/SearchBar';
-import { EMPTY } from 'constants/strings';
-import { CHARATERS, CharacterType } from 'services/graphql/getCharacters';
-import { useLoading } from 'hooks/useLoading';
-
 import {
-  ChangeEvent, FC, useCallback, useMemo, useRef, useState,
+  Accordion, AccordionDetails, Box, Typography,
+} from '@mui/material';
+import {
+  FC, useCallback, useMemo, useRef, useState, ChangeEvent,
 } from 'react';
+import { LOCATIONS, LocationType } from 'services/graphql/getLocations';
+import { EMPTY } from 'constants/strings';
+import { Pagination } from 'components/Pagination';
 import { ONE } from 'constants/numbers';
-import { styles } from './styles';
+import { SearchBar } from 'components/SearchBar';
 
 const INITIAL_FILTER = {
   name: EMPTY,
 };
 
-export const Characters:FC = () => {
+const Locations:FC = () => {
   const [page, setPageNumber] = useState(ONE);
   const [filter, setFilter] = useState(INITIAL_FILTER);
 
   const {
     data: dataResult, loading, error,
-  } = useQuery(CHARATERS, { variables: { page, filter } });
+  } = useQuery(LOCATIONS, { variables: { page, filter } });
   const dataRef = useRef(dataResult);
   const data = useMemo(() => {
     if (!loading) {
@@ -41,24 +39,28 @@ export const Characters:FC = () => {
     setFilter({ name });
   }, [setFilter]);
 
-  const cards = useMemo(() => (
-    data ? data?.characters?.results.map(({ name, image, id }: CharacterType) => (
-      <CardComponent name={name} image={image} key={id} />
+  const locations = useMemo(() => (
+    data ? data.locations.results.map((location: LocationType) => (
+      <Accordion key={location.id}>
+        <AccordionDetails>
+          <Typography>{location.name}</Typography>
+        </AccordionDetails>
+      </Accordion>
     )) : null
   ), [data]);
 
-  useLoading(loading);
   return (
-    <Box sx={styles.container}>
+    <Box>
       <SearchBar handleFilter={handleFilter} />
-      <Box sx={styles.cardContainer}>{cards}</Box>
+      {locations}
       <Pagination
-        count={data?.characters?.info?.pages}
+        count={data?.locations?.info?.pages}
         page={page}
         onChange={handlePage}
       />
     </Box>
+
   );
 };
 
-export default Characters;
+export default Locations;

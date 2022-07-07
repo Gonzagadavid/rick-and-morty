@@ -1,4 +1,13 @@
 import { gql } from '@apollo/client';
+import { CharacterType } from './getCharacters';
+
+export interface LocationType {
+  id: number;
+  name: string;
+  type: string;
+  dimesion: string;
+  residents: CharacterType[]
+}
 
 export const LOCATIONS = gql`
  query Location ($page: Int, $filter: FilterLocation) {

@@ -3,7 +3,7 @@ import { createTheme } from '@mui/material';
 declare module '@mui/material/styles' {
   interface ThemeOptions {
     image: string,
-    spacing: (_values: Array<number>) => string,
+    spacing: (_values: number[]) => string,
     shape: {
       borderRadius: number,
     },
@@ -11,7 +11,7 @@ declare module '@mui/material/styles' {
   }
   interface Theme {
     image: string,
-    spacing: (_values: number[]) => string,
+    spacing: (_values: number[] | number) => string,
     shape: {
       borderRadius: number,
     },
@@ -56,7 +56,7 @@ export const lightTheme = createTheme({
       fontFamily: 'Rock Salt',
     },
   },
-  spacing: (values) => values.map((value) => `${value * 4}px`).join(' '),
+  spacing: (values) => (Array.isArray(values) ? values.map((value) => `${value * 4}px`).join(' ') : values),
   shape: {
     borderRadius: 4,
   },
@@ -102,7 +102,7 @@ export const darkTheme = createTheme({
       fontFamily: 'Rock Salt',
     },
   },
-  spacing: (values) => values.map((value) => `${value * 4}px`).join(' '),
+  spacing: (values) => (Array.isArray(values) ? values.map((value) => `${value * 4}px`).join(' ') : values),
   shape: {
     borderRadius: 4,
   },

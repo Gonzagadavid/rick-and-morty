@@ -2,6 +2,7 @@ import { Box } from '@mui/material';
 import { RouteCard } from 'components/RouteCard';
 import { FC, useMemo } from 'react';
 import { RouteNames } from 'routes';
+import { styles } from './styles';
 
 const { HOME, ...routes } = RouteNames;
 
@@ -13,7 +14,7 @@ const Home: FC = () => {
   ), []);
 
   return (
-    <Box>
+    <Box sx={styles.container}>
       {routesList}
     </Box>
   );

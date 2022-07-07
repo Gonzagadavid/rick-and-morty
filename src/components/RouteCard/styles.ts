@@ -6,6 +6,7 @@ export const styles = {
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
+    margin: (theme: Theme) => theme.spacing([30]),
   },
   text: {
     fontFamily: (theme: Theme) => theme.typography.h4,

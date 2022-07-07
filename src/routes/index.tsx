@@ -5,11 +5,13 @@ import { Route, Routes } from 'react-router-dom';
 export const RouteNames:{[key:string]: string} = {
   HOME: '/',
   CHARACTERS: '/characters',
+  LOCATIONS: '/locations',
 };
 
 const routes = {
   [RouteNames.HOME]: import('pages/Home'),
   [RouteNames.CHARACTERS]: import('pages/Characters'),
+  [RouteNames.LOCATIONS]: import('pages/Locations'),
 };
 
 const lazyRoutes = Object.entries(routes)
