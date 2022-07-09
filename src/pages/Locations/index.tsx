@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 import {
-  Accordion, AccordionDetails, Box, Typography,
+  Accordion, AccordionDetails, AccordionSummary, Avatar, Box, Typography,
 } from '@mui/material';
 import {
   FC, useCallback, useMemo, useRef, useState, ChangeEvent,
@@ -42,10 +42,25 @@ const Locations:FC = () => {
   }, [setFilter]);
 
   const locations = useMemo(() => (
-    data ? data.locations.results.map((location: LocationType) => (
-      <Accordion key={location.id} sx={styles.accordionContainer}>
+    data ? data.locations.results.map(({
+      name, id, residents, ...info
+    }: LocationType) => (
+      <Accordion key={id} sx={styles.accordionContainer}>
+        <AccordionSummary>
+          <Typography sx={styles.accordionTitle}>{name}</Typography>
+        </AccordionSummary>
         <AccordionDetails>
-          <Typography sx={styles.accordionTitle}>{location.name}</Typography>
+          <Typography sx={styles.accordionText}>
+            {`Type: ${info.type || 'unknown'}`}
+          </Typography>
+          <Typography sx={styles.accordionText}>
+            {`Dimension: ${info.dimesion || 'unknown'}`}
+          </Typography>
+          <Box sx={styles.charContainer}>
+            {residents.map((character) => (
+              <Avatar sx={styles.charAvatar} key={character.id} src={character.image} />
+            ))}
+          </Box>
         </AccordionDetails>
       </Accordion>
     )) : null

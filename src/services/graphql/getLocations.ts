@@ -27,6 +27,7 @@ export const LOCATIONS = gql`
           ... on Character {
          id
           name
+          image
           }
         }
       }
