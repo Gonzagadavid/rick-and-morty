@@ -10,6 +10,8 @@ import { EMPTY } from 'constants/strings';
 import { Pagination } from 'components/Pagination';
 import { ONE } from 'constants/numbers';
 import { SearchBar } from 'components/SearchBar';
+import { useLoading } from 'hooks/useLoading';
+import { styles } from './styles';
 
 const INITIAL_FILTER = {
   name: EMPTY,
@@ -41,16 +43,18 @@ const Locations:FC = () => {
 
   const locations = useMemo(() => (
     data ? data.locations.results.map((location: LocationType) => (
-      <Accordion key={location.id}>
+      <Accordion key={location.id} sx={styles.accordionContainer}>
         <AccordionDetails>
-          <Typography>{location.name}</Typography>
+          <Typography sx={styles.accordionTitle}>{location.name}</Typography>
         </AccordionDetails>
       </Accordion>
     )) : null
   ), [data]);
 
+  useLoading(loading);
+
   return (
-    <Box>
+    <Box sx={styles.container}>
       <SearchBar handleFilter={handleFilter} />
       {locations}
       <Pagination

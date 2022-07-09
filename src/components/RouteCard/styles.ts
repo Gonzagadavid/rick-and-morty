@@ -15,11 +15,11 @@ export const styles = {
     left: 0,
     top: (theme: Theme) => theme.percent(10),
     zIndex: 2,
-    textShadow: (theme: Theme) => `0px 0px 5px ${theme.palette.background.paper}`,
+    textShadow: (theme: Theme) => `${theme.spacing([0, 0, 1.25])}${theme.palette.background.paper}`,
   },
   avatar: {
     width: (theme: Theme) => theme.spacing([60]),
     height: (theme: Theme) => theme.spacing([100]),
-    filter: (theme: Theme) => `drop-shadow(0px 0px 10px ${theme.image});`,
+    filter: (theme: Theme) => `drop-shadow(${theme.spacing([0, 0, 2.5])} ${theme.image});`,
   },
 };
