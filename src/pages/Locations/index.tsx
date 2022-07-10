@@ -6,11 +6,14 @@ import {
 import { LOCATIONS, LocationType } from 'services/graphql/getLocations';
 import { EMPTY } from 'constants/strings';
 import { Pagination } from 'components/Pagination';
-import { ONE, TWO, ZERO } from 'constants/numbers';
+import {
+  ONE, TWENTY, TWO, ZERO,
+} from 'constants/numbers';
 import { SearchBar } from 'components/SearchBar';
 import { useLoading } from 'hooks/useLoading';
 import { styles } from './styles';
 import { AccordionLocation } from './AccordionLocation';
+import { SkeletonAccordion } from './AccordionLocation/SkeletonAccordion';
 
 const INITIAL_FILTER = {
   name: EMPTY,
@@ -59,12 +62,14 @@ const Locations:FC = () => {
     )) : null
   ), [data, isExpand, setIsExpand]);
 
+  const skeletons = useMemo(() => Array(TWENTY)
+    .fill(EMPTY).map((_, index) => (<SkeletonAccordion key={`${index + ONE}`} />)), []);
   useLoading(loading);
 
   return (
     <Box sx={styles.container}>
       <SearchBar handleFilter={handleFilter} />
-      {locations}
+      {loading ? skeletons : locations}
       <Pagination
         count={data?.locations?.info?.pages}
         page={page}

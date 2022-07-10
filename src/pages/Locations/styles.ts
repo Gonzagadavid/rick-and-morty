@@ -6,6 +6,8 @@ export const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    paddingBottom: (theme: Theme) => theme.spacing([20]),
+
   },
   accordionContainer: {
     width: (theme: Theme) => theme.percent(15),
@@ -17,6 +19,8 @@ export const styles = {
     fontSize: (theme: Theme) => theme.spacing([2]),
     textAlign: 'center',
     fontFamily: (theme: Theme) => theme.typography.h3,
+    width: (theme: Theme) => theme.percent(25),
+
   },
   accordionText: {
     fontSize: (theme: Theme) => theme.spacing([2]),
@@ -31,6 +35,7 @@ export const styles = {
     flexWrap: 'wrap',
     justinfyContent: 'space-around',
     marginTop: (theme: Theme) => theme.spacing(20),
+
   },
   charAvatar: {
     margin: (theme: Theme) => theme.spacing(15),
@@ -40,5 +45,11 @@ export const styles = {
   icon: {
     width: (theme: Theme) => theme.spacing(80),
     height: (theme: Theme) => theme.spacing(80),
+  },
+  skeleton: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around',
   },
 };
