@@ -1,7 +1,5 @@
 import { useQuery } from '@apollo/client';
-import {
-  Accordion, AccordionDetails, AccordionSummary, Avatar, Box, Typography,
-} from '@mui/material';
+import { Box } from '@mui/material';
 import {
   FC, useCallback, useMemo, useRef, useState, ChangeEvent,
 } from 'react';
@@ -12,6 +10,7 @@ import { ONE } from 'constants/numbers';
 import { SearchBar } from 'components/SearchBar';
 import { useLoading } from 'hooks/useLoading';
 import { styles } from './styles';
+import { AccordionLocation } from './AccordionLocation';
 
 const INITIAL_FILTER = {
   name: EMPTY,
@@ -20,6 +19,7 @@ const INITIAL_FILTER = {
 const Locations:FC = () => {
   const [page, setPageNumber] = useState(ONE);
   const [filter, setFilter] = useState(INITIAL_FILTER);
+  const [isExpand, setIsExpand] = useState<Set<number>>(new Set([]));
 
   const {
     data: dataResult, loading, error,
@@ -43,28 +43,21 @@ const Locations:FC = () => {
 
   const locations = useMemo(() => (
     data ? data.locations.results.map(({
-      name, id, residents, ...info
-    }: LocationType) => (
-      <Accordion key={id} sx={styles.accordionContainer}>
-        <AccordionSummary>
-          <Typography sx={styles.accordionTitle}>{name}</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography sx={styles.accordionText}>
-            {`Type: ${info.type || 'unknown'}`}
-          </Typography>
-          <Typography sx={styles.accordionText}>
-            {`Dimension: ${info.dimesion || 'unknown'}`}
-          </Typography>
-          <Box sx={styles.charContainer}>
-            {residents.map((character) => (
-              <Avatar sx={styles.charAvatar} key={character.id} src={character.image} />
-            ))}
-          </Box>
-        </AccordionDetails>
-      </Accordion>
+      name, id, residents, dimesion, type,
+    }: LocationType, index: number) => (
+      <AccordionLocation
+        key={id}
+        name={name}
+        id={id}
+        residents={residents}
+        dimesion={dimesion}
+        type={type}
+        isExpand={isExpand}
+        setIsExpand={setIsExpand}
+        isOdd={index % 2 !== 0}
+      />
     )) : null
-  ), [data]);
+  ), [data, isExpand, setIsExpand]);
 
   useLoading(loading);
 

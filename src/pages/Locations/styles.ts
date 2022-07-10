@@ -36,6 +36,9 @@ export const styles = {
     margin: (theme: Theme) => theme.spacing(15),
     width: (theme: Theme) => theme.spacing(80),
     height: (theme: Theme) => theme.spacing(80),
-
+  },
+  icon: {
+    width: (theme: Theme) => theme.spacing(80),
+    height: (theme: Theme) => theme.spacing(80),
   },
 };
