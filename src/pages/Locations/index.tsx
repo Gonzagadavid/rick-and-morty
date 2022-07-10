@@ -6,7 +6,7 @@ import {
 import { LOCATIONS, LocationType } from 'services/graphql/getLocations';
 import { EMPTY } from 'constants/strings';
 import { Pagination } from 'components/Pagination';
-import { ONE } from 'constants/numbers';
+import { ONE, TWO, ZERO } from 'constants/numbers';
 import { SearchBar } from 'components/SearchBar';
 import { useLoading } from 'hooks/useLoading';
 import { styles } from './styles';
@@ -43,18 +43,18 @@ const Locations:FC = () => {
 
   const locations = useMemo(() => (
     data ? data.locations.results.map(({
-      name, id, residents, dimesion, type,
+      name, id, residents, dimension, type,
     }: LocationType, index: number) => (
       <AccordionLocation
         key={id}
         name={name}
         id={id}
         residents={residents}
-        dimesion={dimesion}
+        dimension={dimension}
         type={type}
         isExpand={isExpand}
         setIsExpand={setIsExpand}
-        isOdd={index % 2 !== 0}
+        isOdd={index % TWO !== ZERO}
       />
     )) : null
   ), [data, isExpand, setIsExpand]);

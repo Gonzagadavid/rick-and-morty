@@ -5,7 +5,7 @@ export interface LocationType {
   id: number;
   name: string;
   type: string;
-  dimesion: string;
+  dimension: string;
   residents: CharacterType[]
 }
 

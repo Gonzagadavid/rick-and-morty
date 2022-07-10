@@ -5,12 +5,12 @@ import { Pagination } from 'components/Pagination';
 import { SearchBar } from 'components/SearchBar';
 import { EMPTY } from 'constants/strings';
 import { CHARATERS, CharacterType } from 'services/graphql/getCharacters';
-import { useLoading } from 'hooks/useLoading';
 
 import {
   ChangeEvent, FC, useCallback, useMemo, useRef, useState,
 } from 'react';
-import { ONE } from 'constants/numbers';
+import { ONE, TWENTY } from 'constants/numbers';
+import { SkeletonCard } from 'components/Card/SkeletonCard';
 import { styles } from './styles';
 
 const INITIAL_FILTER = {
@@ -47,11 +47,13 @@ export const Characters:FC = () => {
     )) : null
   ), [data]);
 
-  useLoading(loading);
+  const skeletons = useMemo(() => Array(TWENTY)
+    .fill(EMPTY).map((_, index) => (<SkeletonCard key={`${index + ONE}`} />)), []);
+
   return (
     <Box sx={styles.container}>
       <SearchBar handleFilter={handleFilter} />
-      <Box sx={styles.cardContainer}>{cards}</Box>
+      <Box sx={styles.cardContainer}>{loading ? skeletons : cards }</Box>
       <Pagination
         count={data?.characters?.info?.pages}
         page={page}

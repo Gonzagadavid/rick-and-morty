@@ -8,6 +8,7 @@ import {
 
 import rickIcon from 'images/rick_88915.svg';
 import mortyIcon from 'images/morty_88916.svg';
+import { UNKNOW } from 'constants/strings';
 import { styles } from '../styles';
 
 interface CharacterResident {
@@ -20,7 +21,7 @@ interface AccordionLocationProps {
   id: number;
   name: string;
   type: string;
-  dimesion: string;
+  dimension: string;
   residents: CharacterResident[];
   isExpand: Set<number>
   setIsExpand: Dispatch<SetStateAction<Set<number>>>
@@ -32,7 +33,7 @@ const Icon: FC<{isOdd: boolean}> = ({ isOdd }) => (
     : <Avatar sx={styles.icon} src={mortyIcon} />);
 
 export const AccordionLocation: FC<AccordionLocationProps> = ({
-  id, name, type, dimesion, residents, isExpand, setIsExpand, isOdd,
+  id, name, type, dimension, residents, isExpand, setIsExpand, isOdd,
 }) => {
   const handleExpand = useCallback((
     _event: SyntheticEvent<Element, Event>,
@@ -71,10 +72,10 @@ export const AccordionLocation: FC<AccordionLocationProps> = ({
       </AccordionSummary>
       <AccordionDetails>
         <Typography sx={styles.accordionText}>
-          {`Type: ${type || 'unknown'}`}
+          {`Type: ${type || UNKNOW}`}
         </Typography>
         <Typography sx={styles.accordionText}>
-          {`Dimension: ${dimesion || 'unknown'}`}
+          {`Dimension: ${dimension || UNKNOW}`}
         </Typography>
         {residentsContainer}
       </AccordionDetails>

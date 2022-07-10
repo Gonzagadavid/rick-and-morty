@@ -27,7 +27,7 @@ export const SearchBar:FC<SearchBarProps> = ({ handleFilter }) => {
 
   return (
     <Box sx={styles.container}>
-      <TextField sx={styles.input} value={text} onChange={onChangeText} onKeyDown={onKey} />
+      <TextField sx={styles.input} value={text} onChange={onChangeText} onKeyDown={onKey} autoComplete="off" />
       <Button sx={styles.button} onClick={onSearch}>
         <Search />
       </Button>

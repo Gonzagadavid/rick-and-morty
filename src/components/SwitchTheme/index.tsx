@@ -17,7 +17,6 @@ export const SwitchTheme = () => {
       <IconButton onClick={changeTheme}>
         {icon}
       </IconButton>
-      {/* <Switch onChange={changeTheme} sx={styles.select} /> */}
     </Box>
   );
 };
