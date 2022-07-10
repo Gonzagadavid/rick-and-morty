@@ -6,10 +6,9 @@ import {
   FC, SetStateAction, SyntheticEvent, useCallback, useMemo,
 } from 'react';
 
-import rickIcon from 'images/rick_88915.svg';
-import mortyIcon from 'images/morty_88916.svg';
 import { UNKNOW } from 'constants/strings';
 import { styles } from '../styles';
+import { Icon } from './Icon';
 
 interface CharacterResident {
   id: number;
@@ -27,10 +26,6 @@ interface AccordionLocationProps {
   setIsExpand: Dispatch<SetStateAction<Set<number>>>
   isOdd: boolean
 }
-
-const Icon: FC<{isOdd: boolean}> = ({ isOdd }) => (
-  isOdd ? <Avatar sx={styles.icon} src={rickIcon} />
-    : <Avatar sx={styles.icon} src={mortyIcon} />);
 
 export const AccordionLocation: FC<AccordionLocationProps> = ({
   id, name, type, dimension, residents, isExpand, setIsExpand, isOdd,
