@@ -6,12 +6,14 @@ export const RouteNames:{[key:string]: string} = {
   HOME: '/',
   CHARACTERS: '/characters',
   LOCATIONS: '/locations',
+  EPISODES: '/episodes',
 };
 
 const routes = {
   [RouteNames.HOME]: import('pages/Home'),
   [RouteNames.CHARACTERS]: import('pages/Characters'),
   [RouteNames.LOCATIONS]: import('pages/Locations'),
+  [RouteNames.EPISODES]: import('pages/Episodes'),
 };
 
 const lazyRoutes = Object.entries(routes)

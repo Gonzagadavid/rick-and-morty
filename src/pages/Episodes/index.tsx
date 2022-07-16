@@ -57,9 +57,12 @@ const Episodes = () => {
     )) : null
   ), [data, isExpand, setIsExpand]);
 
-  const skeletons = useMemo(() => Array(TWENTY)
-    .fill(EMPTY).map((_, index) => (<SkeletonAccordion key={`${index + ONE}`} />)), []);
-  console.log(data);
+  const skeletons = useMemo(
+    () => Array(TWENTY)
+      .fill(EMPTY).map((_, index) => (<SkeletonAccordion key={`${index + ONE}`} />)),
+    [],
+  );
+
   return (
     <Box sx={styles.container}>
       <SearchBar handleFilter={handleFilter} />

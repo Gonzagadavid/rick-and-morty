@@ -14,6 +14,8 @@ export const styles = {
     position: 'absolute',
     left: 0,
     top: (theme: Theme) => theme.percent(10),
+    textAlign: 'center',
+    width: '100%',
     zIndex: 2,
     textShadow: (theme: Theme) => `${theme.spacing([0, 0, 1.25])}${theme.palette.background.paper}`,
   },
