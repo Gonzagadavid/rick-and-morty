@@ -6,7 +6,8 @@ export interface EpisodesType {
   name: string;
   air_date: string;
   created: string;
-  results: CharacterType[]
+  episode: string;
+  characters: CharacterType[]
 }
 
 export const EPISODES = gql`
