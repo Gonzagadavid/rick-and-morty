@@ -1,5 +1,5 @@
 import { Box, Pagination as PaginationMUI } from '@mui/material';
-import { ChangeEvent, FC } from 'react';
+import { ChangeEvent, FC, memo } from 'react';
 import { styles } from './styles';
 
 interface PaginationProps {
@@ -8,7 +8,7 @@ interface PaginationProps {
   onChange: (_event: ChangeEvent<unknown>, page: number) => void
 }
 
-export const Pagination: FC<PaginationProps> = ({ count, page, onChange }) => (
+export const PaginationCompoent: FC<PaginationProps> = ({ count, page, onChange }) => (
   <Box sx={styles.container}>
     <PaginationMUI
       count={count}
@@ -20,3 +20,5 @@ export const Pagination: FC<PaginationProps> = ({ count, page, onChange }) => (
     />
   </Box>
 );
+
+export const Pagination = memo(PaginationCompoent);

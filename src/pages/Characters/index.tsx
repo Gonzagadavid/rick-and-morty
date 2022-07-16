@@ -47,8 +47,11 @@ export const Characters:FC = () => {
     )) : null
   ), [data]);
 
-  const skeletons = useMemo(() => Array(TWENTY)
-    .fill(EMPTY).map((_, index) => (<SkeletonCard key={`${index + ONE}`} />)), []);
+  const skeletons = useMemo(
+    () => Array(TWENTY)
+      .fill(EMPTY).map((_, index) => (<SkeletonCard key={`${index + ONE}`} />)),
+    [],
+  );
 
   return (
     <Box sx={styles.container}>

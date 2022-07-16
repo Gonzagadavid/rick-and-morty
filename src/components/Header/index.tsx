@@ -7,11 +7,7 @@ import { Menu } from 'components/Menu';
 import { useModal } from 'hooks/useModal';
 import { styles } from './styles';
 
-interface HeaderProps {
-  title: string
-}
-
-export const Header: FC<HeaderProps> = () => {
+export const Header: FC = () => {
   const { isOpen, onClose, onOpen } = useModal();
 
   return (
