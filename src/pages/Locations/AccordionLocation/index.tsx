@@ -1,14 +1,13 @@
 import {
-  Accordion, AccordionDetails, AccordionSummary, Avatar, Box, Typography,
+  Avatar, Box, Typography,
 } from '@mui/material';
 import {
-  Dispatch,
-  FC, SetStateAction, SyntheticEvent, useCallback, useMemo,
+  Dispatch, FC, memo, SetStateAction, useMemo,
 } from 'react';
 
 import { UNKNOW } from 'constants/strings';
+import { Accordion } from 'components/Accordion';
 import { styles } from '../styles';
-import { Icon } from './Icon';
 
 interface CharacterResident {
   id: number;
@@ -27,24 +26,9 @@ interface AccordionLocationProps {
   isOdd: boolean
 }
 
-export const AccordionLocation: FC<AccordionLocationProps> = ({
+const AccordionLocationComponent: FC<AccordionLocationProps> = ({
   id, name, type, dimension, residents, isExpand, setIsExpand, isOdd,
 }) => {
-  const handleExpand = useCallback((
-    _event: SyntheticEvent<Element, Event>,
-    expanded: boolean,
-  ) => {
-    setIsExpand((prev) => {
-      const newExpand = new Set(prev);
-      if (expanded) {
-        newExpand.add(id);
-        return newExpand;
-      }
-      newExpand.delete(id);
-      return newExpand;
-    });
-  }, [setIsExpand]);
-
   const residentsContainer = useMemo(() => (
     <Box sx={styles.charContainer}>
       {residents.map((character) => (
@@ -55,25 +39,21 @@ export const AccordionLocation: FC<AccordionLocationProps> = ({
 
   return (
     <Accordion
-      key={id}
-      sx={styles.accordionContainer}
-      expanded={isExpand.has(id)}
-      onChange={handleExpand}
+      id={id}
+      isExpand={isExpand}
+      isOdd={isOdd}
+      setIsExpand={setIsExpand}
+      title={name}
     >
-      <AccordionSummary
-        expandIcon={<Icon isOdd={isOdd} />}
-      >
-        <Typography sx={styles.accordionTitle}>{name}</Typography>
-      </AccordionSummary>
-      <AccordionDetails>
-        <Typography sx={styles.accordionText}>
-          {`Type: ${type || UNKNOW}`}
-        </Typography>
-        <Typography sx={styles.accordionText}>
-          {`Dimension: ${dimension || UNKNOW}`}
-        </Typography>
-        {residentsContainer}
-      </AccordionDetails>
+      <Typography sx={styles.accordionText}>
+        {`Type: ${type || UNKNOW}`}
+      </Typography>
+      <Typography sx={styles.accordionText}>
+        {`Dimension: ${dimension || UNKNOW}`}
+      </Typography>
+      {residentsContainer}
     </Accordion>
   );
 };
+
+export const AccordionLocation = memo(AccordionLocationComponent);

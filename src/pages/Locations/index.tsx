@@ -13,7 +13,7 @@ import { SearchBar } from 'components/SearchBar';
 import { useLoading } from 'hooks/useLoading';
 import { styles } from './styles';
 import { AccordionLocation } from './AccordionLocation';
-import { SkeletonAccordion } from './AccordionLocation/SkeletonAccordion';
+import { SkeletonAccordion } from '../../components/Accordion/SkeletonAccordion';
 
 const INITIAL_FILTER = {
   name: EMPTY,
@@ -64,6 +64,7 @@ const Locations:FC = () => {
 
   const skeletons = useMemo(() => Array(TWENTY)
     .fill(EMPTY).map((_, index) => (<SkeletonAccordion key={`${index + ONE}`} />)), []);
+
   useLoading(loading);
 
   return (
