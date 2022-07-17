@@ -11,6 +11,7 @@ import {
 } from 'react';
 import { ONE, TWENTY } from 'constants/numbers';
 import { SkeletonCard } from 'components/Card/SkeletonCard';
+import { ErrorMesage } from 'components/ErrorMessage';
 import { styles } from './styles';
 
 const INITIAL_FILTER = {
@@ -31,7 +32,6 @@ export const Characters:FC = () => {
     }
     return dataRef.current;
   }, [dataResult]);
-  if (error) return <p>error</p>;
 
   const handlePage = useCallback((_event: ChangeEvent<unknown>, page: number) => {
     setPageNumber(page);
@@ -56,6 +56,7 @@ export const Characters:FC = () => {
   return (
     <Box sx={styles.container}>
       <SearchBar handleFilter={handleFilter} />
+      {error && <ErrorMesage />}
       <Box sx={styles.cardContainer}>{loading ? skeletons : cards }</Box>
       <Pagination
         count={data?.characters?.info?.pages}

@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { Box } from '@mui/material';
 import { SkeletonAccordion } from 'components/Accordion/SkeletonAccordion';
+import { ErrorMesage } from 'components/ErrorMessage';
 import { Pagination } from 'components/Pagination';
 import { SearchBar } from 'components/SearchBar';
 import {
@@ -34,7 +35,6 @@ const Episodes = () => {
     }
     return dataRef.current;
   }, [dataResult]);
-  if (error) return <p>error</p>;
 
   const handlePage = useCallback((_event: ChangeEvent<unknown>, page: number) => {
     setPageNumber(page);
@@ -66,6 +66,7 @@ const Episodes = () => {
   return (
     <Box sx={styles.container}>
       <SearchBar handleFilter={handleFilter} />
+      {error && <ErrorMesage />}
       {loading ? skeletons : episodes}
       <Pagination
         count={data?.locations?.info?.pages}

@@ -11,6 +11,7 @@ import {
 } from 'constants/numbers';
 import { SearchBar } from 'components/SearchBar';
 import { useLoading } from 'hooks/useLoading';
+import { ErrorMesage } from 'components/ErrorMessage';
 import { styles } from './styles';
 import { AccordionLocation } from './AccordionLocation';
 import { SkeletonAccordion } from '../../components/Accordion/SkeletonAccordion';
@@ -34,7 +35,6 @@ const Locations:FC = () => {
     }
     return dataRef.current;
   }, [dataResult]);
-  if (error) return <p>error</p>;
 
   const handlePage = useCallback((_event: ChangeEvent<unknown>, page: number) => {
     setPageNumber(page);
@@ -70,6 +70,7 @@ const Locations:FC = () => {
   return (
     <Box sx={styles.container}>
       <SearchBar handleFilter={handleFilter} />
+      {error && <ErrorMesage />}
       {loading ? skeletons : locations}
       <Pagination
         count={data?.locations?.info?.pages}
