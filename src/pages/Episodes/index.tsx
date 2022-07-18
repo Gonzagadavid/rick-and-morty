@@ -2,6 +2,7 @@ import { useQuery } from '@apollo/client';
 import { Box } from '@mui/material';
 import { SkeletonAccordion } from 'components/Accordion/SkeletonAccordion';
 import { ErrorMesage } from 'components/ErrorMessage';
+import { NotFound } from 'components/NotFound';
 import { Pagination } from 'components/Pagination';
 import { SearchBar } from 'components/SearchBar';
 import {
@@ -45,16 +46,17 @@ const Episodes = () => {
   }, [setFilter]);
 
   const episodes = useMemo(() => (
-    data ? data.episodes.results.map((episode: EpisodesType, index: number) => (
-      <AccordionEpisode
-        key={episode.id}
-        id={episode.id}
-        episode={episode}
-        isExpand={isExpand}
-        setIsExpand={setIsExpand}
-        isOdd={index % TWO !== ZERO}
-      />
-    )) : null
+    data && data?.characters?.results.length
+      ? data.episodes.results.map((episode: EpisodesType, index: number) => (
+        <AccordionEpisode
+          key={episode.id}
+          id={episode.id}
+          episode={episode}
+          isExpand={isExpand}
+          setIsExpand={setIsExpand}
+          isOdd={index % TWO !== ZERO}
+        />
+      )) : <NotFound />
   ), [data, isExpand, setIsExpand]);
 
   const skeletons = useMemo(

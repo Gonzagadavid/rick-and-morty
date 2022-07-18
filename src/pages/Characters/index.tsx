@@ -12,6 +12,7 @@ import {
 import { ONE, TWENTY } from 'constants/numbers';
 import { SkeletonCard } from 'components/Card/SkeletonCard';
 import { ErrorMesage } from 'components/ErrorMessage';
+import { NotFound } from 'components/NotFound';
 import { styles } from './styles';
 
 const INITIAL_FILTER = {
@@ -42,9 +43,10 @@ export const Characters:FC = () => {
   }, [setFilter]);
 
   const cards = useMemo(() => (
-    data ? data?.characters?.results.map(({ name, image, id }: CharacterType) => (
-      <CardComponent name={name} image={image} key={id} />
-    )) : null
+    data && data?.characters?.results.length
+      ? data?.characters?.results.map(({ name, image, id }: CharacterType) => (
+        <CardComponent name={name} image={image} key={id} />
+      )) : <NotFound />
   ), [data]);
 
   const skeletons = useMemo(

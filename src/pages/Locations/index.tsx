@@ -12,6 +12,7 @@ import {
 import { SearchBar } from 'components/SearchBar';
 import { useLoading } from 'hooks/useLoading';
 import { ErrorMesage } from 'components/ErrorMessage';
+import { NotFound } from 'components/NotFound';
 import { styles } from './styles';
 import { AccordionLocation } from './AccordionLocation';
 import { SkeletonAccordion } from '../../components/Accordion/SkeletonAccordion';
@@ -45,21 +46,22 @@ const Locations:FC = () => {
   }, [setFilter]);
 
   const locations = useMemo(() => (
-    data ? data.locations.results.map(({
-      name, id, residents, dimension, type,
-    }: LocationType, index: number) => (
-      <AccordionLocation
-        key={id}
-        name={name}
-        id={id}
-        residents={residents}
-        dimension={dimension}
-        type={type}
-        isExpand={isExpand}
-        setIsExpand={setIsExpand}
-        isOdd={index % TWO !== ZERO}
-      />
-    )) : null
+    data && data?.characters?.results.length
+      ? data.locations.results.map(({
+        name, id, residents, dimension, type,
+      }: LocationType, index: number) => (
+        <AccordionLocation
+          key={id}
+          name={name}
+          id={id}
+          residents={residents}
+          dimension={dimension}
+          type={type}
+          isExpand={isExpand}
+          setIsExpand={setIsExpand}
+          isOdd={index % TWO !== ZERO}
+        />
+      )) : <NotFound />
   ), [data, isExpand, setIsExpand]);
 
   const skeletons = useMemo(() => Array(TWENTY)
