@@ -46,7 +46,7 @@ const Locations:FC = () => {
   }, [setFilter]);
 
   const locations = useMemo(() => (
-    data && data?.characters?.results.length
+    data && data?.locations?.results.length
       ? data.locations.results.map(({
         name, id, residents, dimension, type,
       }: LocationType, index: number) => (

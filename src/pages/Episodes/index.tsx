@@ -46,7 +46,7 @@ const Episodes = () => {
   }, [setFilter]);
 
   const episodes = useMemo(() => (
-    data && data?.characters?.results.length
+    data && data?.episodes?.results.length
       ? data.episodes.results.map((episode: EpisodesType, index: number) => (
         <AccordionEpisode
           key={episode.id}
