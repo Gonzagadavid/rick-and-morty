@@ -1,14 +1,4 @@
 import { gql } from '@apollo/client';
-import { CharacterType } from './getCharacters';
-
-export interface EpisodesType {
-  id: number;
-  name: string;
-  air_date: string;
-  created: string;
-  episode: string;
-  characters: CharacterType[]
-}
 
 export const EPISODES = gql`
  query Episodes ($page: Int, $filter: FilterEpisode) {
@@ -23,7 +13,6 @@ export const EPISODES = gql`
         id
         name
         air_date
-        episode
         created
         characters {
           ... on Character {

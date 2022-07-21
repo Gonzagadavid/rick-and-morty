@@ -7,28 +7,28 @@ import {
 
 import { UNKNOW } from 'constants/strings';
 import { Accordion } from 'components/Accordion';
-import { EpisodesType } from 'services/graphql/getEpisodes';
 import { dateFormat } from 'utils/dateFormat';
+import { Character } from 'generated/graphql';
 import { styles } from '../styles';
 
 interface AccordionEpisodeProps {
-  id: number;
-  episode: EpisodesType
-  isExpand: Set<number>
-  setIsExpand: Dispatch<SetStateAction<Set<number>>>
+  id: string;
+  isExpand: Set<string>
+  setIsExpand: Dispatch<SetStateAction<Set<string>>>
   isOdd: boolean
+  airDate: string,
+  created: string,
+  characters?: (Partial<Character | null>)[],
+  name: string,
 }
 
 const AccordionEpisodeComponent: FC<AccordionEpisodeProps> = ({
-  id, episode, isExpand, setIsExpand, isOdd,
+  id, isExpand, setIsExpand, isOdd, airDate, created, characters = [], name,
 }) => {
-  const {
-    air_date: airDate, created, characters, name,
-  } = episode;
   const charactersContainer = useMemo(() => (
     <Box sx={styles.charContainer}>
-      {characters.map((character) => (
-        <Avatar sx={styles.charAvatar} key={character.id} src={character.image} />
+      {characters && characters.map((character) => (
+        <Avatar sx={styles.charAvatar} key={character?.id} src={character?.image ?? ''} />
       ))}
     </Box>
   ), []);
@@ -39,13 +39,13 @@ const AccordionEpisodeComponent: FC<AccordionEpisodeProps> = ({
       isExpand={isExpand}
       isOdd={isOdd}
       setIsExpand={setIsExpand}
-      title={name}
+      title={name ?? ''}
     >
       <Typography sx={styles.accordionText}>
-        {`Created: ${dateFormat(airDate) || UNKNOW}`}
+        {`Created: ${dateFormat(airDate ?? '') || UNKNOW}`}
       </Typography>
       <Typography sx={styles.accordionText}>
-        {`Air Date: ${dateFormat(created) || UNKNOW}`}
+        {`Air Date: ${dateFormat(created ?? '') || UNKNOW}`}
       </Typography>
       {charactersContainer}
     </Accordion>

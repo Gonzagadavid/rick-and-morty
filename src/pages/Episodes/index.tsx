@@ -1,4 +1,3 @@
-import { useQuery } from '@apollo/client';
 import { Box } from '@mui/material';
 import { SkeletonAccordion } from 'components/Accordion/SkeletonAccordion';
 import { ErrorMesage } from 'components/ErrorMessage';
@@ -9,11 +8,11 @@ import {
   ONE, TWENTY, TWO, ZERO,
 } from 'constants/numbers';
 import { EMPTY } from 'constants/strings';
+import { useEpisodesQuery } from 'generated/graphql';
 
 import {
   ChangeEvent, useCallback, useMemo, useRef, useState,
 } from 'react';
-import { EPISODES, EpisodesType } from 'services/graphql/getEpisodes';
 import { AccordionEpisode } from './AccordionEpisode';
 import { styles } from './styles';
 
@@ -24,11 +23,11 @@ const INITIAL_FILTER = {
 const Episodes = () => {
   const [page, setPageNumber] = useState(ONE);
   const [filter, setFilter] = useState(INITIAL_FILTER);
-  const [isExpand, setIsExpand] = useState<Set<number>>(new Set([]));
+  const [isExpand, setIsExpand] = useState<Set<string>>(new Set([]));
 
   const {
     data: dataResult, loading, error,
-  } = useQuery(EPISODES, { variables: { page, filter } });
+  } = useEpisodesQuery({ variables: { page, filter } });
   const dataRef = useRef(dataResult);
   const data = useMemo(() => {
     if (!loading) {
@@ -46,12 +45,15 @@ const Episodes = () => {
   }, [setFilter]);
 
   const episodes = useMemo(() => (
-    data && data?.episodes?.results.length
-      ? data.episodes.results.map((episode: EpisodesType, index: number) => (
+    data && data.episodes && data.episodes.results
+      ? data.episodes.results.map((episode, index: number) => (
         <AccordionEpisode
-          key={episode.id}
-          id={episode.id}
-          episode={episode}
+          key={episode?.id}
+          id={episode?.id ?? EMPTY}
+          name={episode?.name ?? EMPTY}
+          airDate={episode?.air_date ?? EMPTY}
+          created={episode?.created ?? EMPTY}
+          characters={episode?.characters}
           isExpand={isExpand}
           setIsExpand={setIsExpand}
           isOdd={index % TWO !== ZERO}
@@ -71,7 +73,7 @@ const Episodes = () => {
       {error && <ErrorMesage />}
       {loading ? skeletons : episodes}
       <Pagination
-        count={data?.locations?.info?.pages}
+        count={data?.episodes?.info?.pages ?? ONE}
         page={page}
         onChange={handlePage}
       />

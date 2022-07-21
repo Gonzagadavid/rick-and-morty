@@ -9,10 +9,10 @@ import { Icon } from './Icon';
 
 interface AccordionProps {
   children: ReactNode;
-  id: number;
-  isExpand: Set<number>;
+  id: string;
+  isExpand: Set<string>;
   isOdd: boolean;
-  setIsExpand: Dispatch<SetStateAction<Set<number>>>
+  setIsExpand: Dispatch<SetStateAction<Set<string>>>
   title: string
 }
 

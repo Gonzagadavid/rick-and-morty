@@ -1,9 +1,7 @@
-import { useQuery } from '@apollo/client';
 import { Box } from '@mui/material';
 import {
   FC, useCallback, useMemo, useRef, useState, ChangeEvent,
 } from 'react';
-import { LOCATIONS, LocationType } from 'services/graphql/getLocations';
 import { EMPTY } from 'constants/strings';
 import { Pagination } from 'components/Pagination';
 import {
@@ -13,6 +11,7 @@ import { SearchBar } from 'components/SearchBar';
 import { useLoading } from 'hooks/useLoading';
 import { ErrorMesage } from 'components/ErrorMessage';
 import { NotFound } from 'components/NotFound';
+import { useLocationQuery } from 'generated/graphql';
 import { styles } from './styles';
 import { AccordionLocation } from './AccordionLocation';
 import { SkeletonAccordion } from '../../components/Accordion/SkeletonAccordion';
@@ -24,11 +23,11 @@ const INITIAL_FILTER = {
 const Locations:FC = () => {
   const [page, setPageNumber] = useState(ONE);
   const [filter, setFilter] = useState(INITIAL_FILTER);
-  const [isExpand, setIsExpand] = useState<Set<number>>(new Set([]));
+  const [isExpand, setIsExpand] = useState<Set<string>>(new Set([]));
 
   const {
     data: dataResult, loading, error,
-  } = useQuery(LOCATIONS, { variables: { page, filter } });
+  } = useLocationQuery({ variables: { page, filter } });
   const dataRef = useRef(dataResult);
   const data = useMemo(() => {
     if (!loading) {
@@ -46,17 +45,15 @@ const Locations:FC = () => {
   }, [setFilter]);
 
   const locations = useMemo(() => (
-    data && data?.locations?.results.length
-      ? data.locations.results.map(({
-        name, id, residents, dimension, type,
-      }: LocationType, index: number) => (
+    data && data?.locations && data.locations.results
+      ? data.locations.results.map((location, index: number) => (
         <AccordionLocation
-          key={id}
-          name={name}
-          id={id}
-          residents={residents}
-          dimension={dimension}
-          type={type}
+          key={location?.id}
+          name={location?.name ?? EMPTY}
+          id={location?.id ?? EMPTY}
+          residents={location?.residents}
+          dimension={location?.dimension ?? EMPTY}
+          type={location?.dimension ?? EMPTY}
           isExpand={isExpand}
           setIsExpand={setIsExpand}
           isOdd={index % TWO !== ZERO}
@@ -75,7 +72,7 @@ const Locations:FC = () => {
       {error && <ErrorMesage />}
       {loading ? skeletons : locations}
       <Pagination
-        count={data?.locations?.info?.pages}
+        count={data?.locations?.info?.pages ?? ONE}
         page={page}
         onChange={handlePage}
       />
