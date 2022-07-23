@@ -162,6 +162,13 @@ export type QueryLocationsByIdsArgs = {
   ids: Array<Scalars['ID']>;
 };
 
+export type ChatacterQueryVariables = Exact<{
+  id: Scalars['ID'];
+}>;
+
+
+export type ChatacterQuery = { __typename?: 'Query', character?: { __typename?: 'Character', id?: string | null, name?: string | null, status?: string | null, image?: string | null, species?: string | null, type?: string | null, gender?: string | null, created?: string | null, origin?: { __typename?: 'Location', id?: string | null, name?: string | null } | null, episode: Array<{ __typename?: 'Episode', id?: string | null, name?: string | null } | null> } | null };
+
 export type ChatactersQueryVariables = Exact<{
   page?: InputMaybe<Scalars['Int']>;
   filter?: InputMaybe<FilterCharacter>;
@@ -187,6 +194,56 @@ export type LocationQueryVariables = Exact<{
 export type LocationQuery = { __typename?: 'Query', locations?: { __typename?: 'Locations', info?: { __typename?: 'Info', next?: number | null, prev?: number | null, count?: number | null, pages?: number | null } | null, results?: Array<{ __typename?: 'Location', id?: string | null, name?: string | null, type?: string | null, dimension?: string | null, residents: Array<{ __typename?: 'Character', id?: string | null, name?: string | null, image?: string | null } | null> } | null> | null } | null };
 
 
+export const ChatacterDocument = gql`
+    query Chatacter($id: ID!) {
+  character(id: $id) {
+    id
+    name
+    status
+    image
+    species
+    type
+    gender
+    origin {
+      id
+      name
+    }
+    episode {
+      id
+      name
+    }
+    created
+  }
+}
+    `;
+
+/**
+ * __useChatacterQuery__
+ *
+ * To run a query within a React component, call `useChatacterQuery` and pass it any options that fit your needs.
+ * When your component renders, `useChatacterQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useChatacterQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useChatacterQuery(baseOptions: Apollo.QueryHookOptions<ChatacterQuery, ChatacterQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<ChatacterQuery, ChatacterQueryVariables>(ChatacterDocument, options);
+      }
+export function useChatacterLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<ChatacterQuery, ChatacterQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<ChatacterQuery, ChatacterQueryVariables>(ChatacterDocument, options);
+        }
+export type ChatacterQueryHookResult = ReturnType<typeof useChatacterQuery>;
+export type ChatacterLazyQueryHookResult = ReturnType<typeof useChatacterLazyQuery>;
+export type ChatacterQueryResult = Apollo.QueryResult<ChatacterQuery, ChatacterQueryVariables>;
 export const ChatactersDocument = gql`
     query Chatacters($page: Int, $filter: FilterCharacter) {
   characters(page: $page, filter: $filter) {
