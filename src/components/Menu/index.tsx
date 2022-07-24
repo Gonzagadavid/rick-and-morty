@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { RouteNames } from 'routes';
 import logo from 'images/rick-and-morty-decal-decals-rick-and-morty-240911.png';
 import { Close } from '@mui/icons-material';
+import { LogoBy } from 'components/LogoBy';
 import { styles } from './styles';
 
 interface MenuProps {
@@ -30,5 +31,6 @@ export const Menu: FC<MenuProps> = ({ open, onClose }) => (
         </ListItem>
       ))}
     </List>
+    <LogoBy />
   </Drawer>
 );

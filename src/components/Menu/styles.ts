@@ -31,7 +31,7 @@ export const styles = {
   listItem: {
     '& a': {
       textDecoration: 'none',
-      padding: (theme: Theme) => theme.spacing([1]),
+      padding: (theme: Theme) => theme.spacing([1, 5]),
       color: (theme: Theme) => theme.palette.text.primary,
       fontSize: '1.5rem',
     },
