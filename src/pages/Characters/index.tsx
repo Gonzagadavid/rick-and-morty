@@ -12,6 +12,7 @@ import { SkeletonCard } from 'components/Card/SkeletonCard';
 import { ErrorMesage } from 'components/ErrorMessage';
 import { NotFound } from 'components/NotFound';
 import { useChatactersQuery } from 'generated/graphql';
+import { Link } from 'react-router-dom';
 import { styles } from './styles';
 
 const INITIAL_FILTER = {
@@ -44,7 +45,9 @@ export const CharactersPage:FC = () => {
   const cards = useMemo(() => (
     data && data.characters && data.characters.results
       ? data.characters.results.map((character) => (
-        <CardComponent name={character?.name ?? ''} image={character?.image ?? ''} key={character?.id} />
+        <Link to={`/character/${character?.id}`} key={character?.id}>
+          <CardComponent name={character?.name ?? ''} image={character?.image ?? ''} />
+        </Link>
       )) : <NotFound />
   ), [data]);
 

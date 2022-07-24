@@ -15,5 +15,8 @@ export const styles = {
     flexWrap: 'wrap',
     paddingBottom: (theme: Theme) => theme.spacing([20]),
     width: (theme: Theme) => theme.percent(24),
+    a: {
+      textDecoration: 'none',
+    },
   },
 };

@@ -8,6 +8,7 @@ import {
 import { EMPTY, UNKNOW } from 'constants/strings';
 import { Accordion } from 'components/Accordion';
 import { Character } from 'generated/graphql';
+import { Link } from 'react-router-dom';
 import { styles } from '../styles';
 
 interface AccordionLocationProps {
@@ -27,11 +28,13 @@ const AccordionLocationComponent: FC<AccordionLocationProps> = ({
   const residentsContainer = useMemo(() => (
     <Box sx={styles.charContainer}>
       {residents.map((character) => (
-        <Avatar
-          sx={styles.charAvatar}
-          key={character?.id ?? EMPTY}
-          src={character?.image ?? EMPTY}
-        />
+        <Link to={`/character/${character?.id}`} key={character?.id}>
+          <Avatar
+            sx={styles.charAvatar}
+            key={character?.id ?? EMPTY}
+            src={character?.image ?? EMPTY}
+          />
+        </Link>
       ))}
     </Box>
   ), []);

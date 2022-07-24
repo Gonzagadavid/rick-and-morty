@@ -13,6 +13,7 @@ interface MenuProps {
   onClose: () => void
 }
 
+const { CHARACTER, ...routes } = RouteNames;
 export const Menu: FC<MenuProps> = ({ open, onClose }) => (
   <Drawer open={open} onClose={onClose} sx={styles.drawer}>
     <IconButton
@@ -23,7 +24,7 @@ export const Menu: FC<MenuProps> = ({ open, onClose }) => (
     </IconButton>
     <Avatar src={logo} sx={styles.avatar} />
     <List sx={styles.container}>
-      {Object.keys(RouteNames).map((route) => (
+      {Object.keys(routes).map((route) => (
         <ListItem sx={styles.listItem} key={route} onClick={onClose}>
           <Link to={RouteNames[route]}>{route}</Link>
         </ListItem>

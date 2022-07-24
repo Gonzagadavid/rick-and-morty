@@ -4,7 +4,7 @@ import { FC, useMemo } from 'react';
 import { RouteNames } from 'routes';
 import { styles } from './styles';
 
-const { HOME, ...routes } = RouteNames;
+const { HOME, CHARACTER, ...routes } = RouteNames;
 
 const Home: FC = () => {
   const routesList = useMemo(() => (

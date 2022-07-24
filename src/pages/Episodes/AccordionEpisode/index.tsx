@@ -9,6 +9,7 @@ import { UNKNOW } from 'constants/strings';
 import { Accordion } from 'components/Accordion';
 import { dateFormat } from 'utils/dateFormat';
 import { Character } from 'generated/graphql';
+import { Link } from 'react-router-dom';
 import { styles } from '../styles';
 
 interface AccordionEpisodeProps {
@@ -28,7 +29,9 @@ const AccordionEpisodeComponent: FC<AccordionEpisodeProps> = ({
   const charactersContainer = useMemo(() => (
     <Box sx={styles.charContainer}>
       {characters && characters.map((character) => (
-        <Avatar sx={styles.charAvatar} key={character?.id} src={character?.image ?? ''} />
+        <Link to={`/character/${character?.id}`} key={character?.id}>
+          <Avatar sx={styles.charAvatar} key={character?.id} src={character?.image ?? ''} />
+        </Link>
       ))}
     </Box>
   ), []);
