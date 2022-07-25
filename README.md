@@ -27,3 +27,15 @@ The initial page contains portals to the application pages
 This page contains cards with image and name of all characters, when clicking on the card will redirected you to [Character](#character) page with details of this character
 
 ## Episodes
+
+This page contains episodes info and participating characters, when clicking on the card will redirected you to [Character](#character) page with details of this character
+
+## Locations 
+
+Contains characteristics of animation locations, and characters from this, when clicking on the card will redirected you to [Character](#character) page with details of this character
+
+## Character
+
+This page contains character details
+
+
