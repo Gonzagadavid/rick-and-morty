@@ -22,20 +22,30 @@ Rick and Morty application with information this animation fun, developed to pra
 
 The initial page contains portals to the application pages
 
+![home page](./public/assets/gifs/home.gif)
+
 ## Characters 
 
 This page contains cards with image and name of all characters, when clicking on the card will redirected you to [Character](#character) page with details of this character
+
+![characters page](./public/assets/gifs/chacters.gif)
+
 
 ## Episodes
 
 This page contains episodes info and participating characters, when clicking on the card will redirected you to [Character](#character) page with details of this character
 
+![episodes page](./public/assets/gifs/episodes.gif)
+
 ## Locations 
 
 Contains characteristics of animation locations, and characters from this, when clicking on the card will redirected you to [Character](#character) page with details of this character
+
+![locations page](./public/assets/gifs/locations.gif)
 
 ## Character
 
 This page contains character details
 
+![Character page](./public/assets/gifs/character.gif)
 
