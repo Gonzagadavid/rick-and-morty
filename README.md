@@ -49,3 +49,38 @@ This page contains character details
 
 ![Character page](./public/assets/gifs/character.gif)
 
+# API
+
+This project use the amazing [Rock and Morty API](https://rickandmortyapi.com/)
+
+# Tecnologies
+
+- React
+- Typescript
+- Graphql
+- Apollo Graphql
+- React Router
+- Material UI
+- ESLint  
+  
+<div align="center">
+  <img height="100" width="100" src="./public/assets/icons/react.svg"/> 
+  &nbsp;&nbsp;&nbsp;
+  <img height="100" width="100" src="./public/assets/icons/typescript.svg" />
+  &nbsp;&nbsp;&nbsp;
+  <img height="100" width="100" src="./public/assets/icons/graphql.svg" />
+  &nbsp;&nbsp;&nbsp;
+  <img height="100" width="100" src="./public/assets/icons/apollographql.svg" />
+  &nbsp;&nbsp;&nbsp;
+  <img height="100" width="100" src="./public/assets/icons/reactrouter.svg" />
+  &nbsp;&nbsp;&nbsp;
+  <img height="100" width="100" src="./public/assets/icons/mui.svg" />
+  &nbsp;&nbsp;&nbsp;
+  <img height="100" width="100" src="./public/assets/icons/eslint.svg" />
+</div>
+
+# Work in progress
+
+- Automated Tests
+- Responsiveness
+- Game Page
