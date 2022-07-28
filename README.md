@@ -1,5 +1,7 @@
 ![Rick and Morty logo](./src/images/Daco_4305710.png)
 
+# [Visite this application](https://rick-and-morty-gonzagadavid.vercel.app/)
+
 # Summary
 - [Introduction](#introduction)
 - [Pages](#pages)
@@ -78,6 +80,10 @@ This project use the amazing [Rock and Morty API](https://rickandmortyapi.com/)
   &nbsp;&nbsp;&nbsp;
   <img height="100" width="100" src="./public/assets/icons/eslint.svg" />
 </div>
+
+# Deploy
+
+Deployment in [Vercel](https://vercel.com/) 
 
 # Work in progress
 
