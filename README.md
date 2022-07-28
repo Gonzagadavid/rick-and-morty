@@ -1,46 +1,86 @@
-# Getting Started with Create React App
+![Rick and Morty logo](./src/images/Daco_4305710.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Summary
+- [Introduction](#introduction)
+- [Pages](#pages)
+  - [Home](#home)
+  - [Characters](#characters)
+  - [Episodes](#episodes)
+  - [Locations](#locations)
+  - [Character](#character)
+- [API](#API)
+- [Tecnologies](#tecnologies)
+- [Work in progress](#work-in-progress)
 
-## Available Scripts
+# Intoduction
 
-In the project directory, you can run:
+Rick and Morty application with information this animation fun, developed to practice React TS, Material UI, Apollo client and graphql client side
 
-### `npm start`
+# Pages
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Home
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The initial page contains portals to the application pages
 
-### `npm test`
+![home page](./public/assets/gifs/home.gif)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Characters 
 
-### `npm run build`
+This page contains cards with image and name of all characters, when clicking on the card will redirected you to [Character](#character) page with details of this character
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![characters page](./public/assets/gifs/chacters.gif)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Episodes
 
-### `npm run eject`
+This page contains episodes info and participating characters, when clicking on the card will redirected you to [Character](#character) page with details of this character
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+![episodes page](./public/assets/gifs/episodes.gif)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Locations 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Contains characteristics of animation locations, and characters from this, when clicking on the card will redirected you to [Character](#character) page with details of this character
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+![locations page](./public/assets/gifs/locations.gif)
 
-## Learn More
+## Character
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This page contains character details
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Character page](./public/assets/gifs/character.gif)
+
+# API
+
+This project use the amazing [Rock and Morty API](https://rickandmortyapi.com/)
+
+# Tecnologies
+
+- React
+- Typescript
+- Graphql
+- Apollo Graphql
+- React Router
+- Material UI
+- ESLint  
+  
+<div align="center">
+  <img height="100" width="100" src="./public/assets/icons/react.svg"/> 
+  &nbsp;&nbsp;&nbsp;
+  <img height="100" width="100" src="./public/assets/icons/typescript.svg" />
+  &nbsp;&nbsp;&nbsp;
+  <img height="100" width="100" src="./public/assets/icons/graphql.svg" />
+  &nbsp;&nbsp;&nbsp;
+  <img height="100" width="100" src="./public/assets/icons/apollographql.svg" />
+  &nbsp;&nbsp;&nbsp;
+  <img height="100" width="100" src="./public/assets/icons/reactrouter.svg" />
+  &nbsp;&nbsp;&nbsp;
+  <img height="100" width="100" src="./public/assets/icons/mui.svg" />
+  &nbsp;&nbsp;&nbsp;
+  <img height="100" width="100" src="./public/assets/icons/eslint.svg" />
+</div>
+
+# Work in progress
+
+- Automated Tests
+- Responsiveness
+- Game Page
