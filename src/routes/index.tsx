@@ -8,6 +8,7 @@ export const RouteNames:{[key:string]: string} = {
   LOCATIONS: '/locations',
   EPISODES: '/episodes',
   CHARACTER: '/character/:id',
+  GAME: '/game',
 };
 
 const routes = {
@@ -16,6 +17,7 @@ const routes = {
   [RouteNames.LOCATIONS]: import('pages/Locations'),
   [RouteNames.EPISODES]: import('pages/Episodes'),
   [RouteNames.CHARACTER]: import('pages/Charater'),
+  [RouteNames.GAME]: import('pages/Game'),
 };
 
 const lazyRoutes = Object.entries(routes)
