@@ -1,6 +1,19 @@
-Image {
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.Image {
   background-image: url('../../images/gifs/morty.gif');
 }
-Canvas {
+.Canvas {
   background-image: url('../../images/gifs/Space.gif');
+  background-position: center;
+}
+
+.cv {
+  position: absolute; 
+  background-color: 'red';
 }
