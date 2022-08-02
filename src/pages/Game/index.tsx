@@ -11,6 +11,7 @@ const Game: FC = () => {
   const canvas = useRef<HTMLCanvasElement>(null);
   const canvas2 = useRef<HTMLCanvasElement>(null);
   const [up, setup] = useState(true);
+  const [right, setRight] = useState(false);
   const [MortyX, setMortyX] = useState(1000);
   const [MortyY, setMortyY] = useState(230);
   const [snakeX, setSnakeX] = useState(20);
@@ -21,17 +22,17 @@ const Game: FC = () => {
   const context = canvas.current?.getContext('2d');
   const context2 = canvas2.current?.getContext('2d');
   useEffect(() => {
-    context?.clearRect(MortyX, MortyY - 20, 373, 520);
+    context?.clearRect(MortyX - 50, MortyY - 50, 266, 340);
     drawMorty({
-      context, x: MortyX, y: MortyY, up,
+      context, x: MortyX, y: MortyY, up, right,
     });
-  }, [MortyX, MortyY, up]);
+  }, [MortyX, MortyY, up, right]);
   useEffect(() => {
-    if (snakeX > 1200) setSnakeLeft(true);
-    if (snakeX < -40) setSnakeLeft(false);
-    if (snakeY > 440) setSnakeUp(true);
-    if (snakeY < -40) setSnakeUp(false);
-    context2?.clearRect(snakeX, snakeY - 20, 350, 370);
+    if (snakeX > 1050) setSnakeLeft(true);
+    if (snakeX < -20) setSnakeLeft(false);
+    if (snakeY > 480) setSnakeUp(true);
+    if (snakeY < -20) setSnakeUp(false);
+    context2?.clearRect(snakeX - 50, snakeY - 80, 400, 500);
     drawSnake({
       context: context2, x: snakeX, y: snakeY, up: !snakeLeft,
     });
@@ -40,39 +41,62 @@ const Game: FC = () => {
   useEffect(() => {
     clearInterval(interval.current);
     interval.current = setInterval(() => {
-      console.log(snakeUp);
-      setSnakeY((prev) => (snakeUp ? prev - 20 : prev + 20));
-      setSnakeX((prev) => (snakeLeft ? prev - 20 : prev + 20));
+      setSnakeY((prev) => (snakeUp ? prev - 50 : prev + 50));
+      setSnakeX((prev) => (snakeLeft ? prev - 25 : prev + 30));
     }, 100);
 
     return () => clearInterval(interval.current);
   }, [snakeUp, snakeLeft]);
 
   const keyEvent = (event:KeyboardEvent<HTMLDivElement>) => {
-    if (event.code === 'ArrowUp' && MortyY - 20 > -40) {
+    if ((event.code === 'ArrowUp' || event.code === 'Numpad8') && MortyY - 30 > -40) {
       setup(true);
-      setMortyY((prev) => prev - 20);
+      setMortyY((prev) => prev - 30);
     }
-    if (event.code === 'ArrowDown' && MortyY + 20 < 350) {
+    if ((event.code === 'ArrowDown' || event.code === 'Numpad2') && MortyY + 30 < 470) {
       setup(false);
-      setMortyY((prev) => prev + 20);
+      setMortyY((prev) => prev + 30);
     }
-    if (event.code === 'ArrowLeft' && MortyX - 20 > -40) {
+    if ((event.code === 'ArrowLeft' || event.code === 'Numpad4') && MortyX - 30 > -40) {
+      setRight(false);
       setup(true);
-      setMortyX((prev) => prev - 20);
+      setMortyX((prev) => prev - 30);
     }
-    if (event.code === 'ArrowRight' && MortyX + 20 < 1200) {
+    if ((event.code === 'ArrowRight' || event.code === 'Numpad6') && MortyX + 30 < 1080) {
+      setRight(true);
       setup(false);
-      setMortyX((prev) => prev + 20);
+      setMortyX((prev) => prev + 30);
+    }
+    if (event.code === 'Numpad9' && MortyX + 30 < 800 && MortyY - 30 > -40) {
+      setRight(true);
+      setup(false);
+      setMortyX((prev) => prev + 30);
+      setMortyY((prev) => prev - 30);
+    }
+    if (event.code === 'Numpad7' && MortyX - 30 > -40 && MortyY - 30 > -40) {
+      setRight(false);
+      setup(false);
+      setMortyX((prev) => prev - 30);
+      setMortyY((prev) => prev - 30);
+    }
+    if (event.code === 'Numpad1' && MortyX - 30 > -40 && MortyY + 30 < 470) {
+      setRight(false);
+      setup(false);
+      setMortyX((prev) => prev - 30);
+      setMortyY((prev) => prev + 30);
+    }
+    if (event.code === 'Numpad3' && MortyX + 30 < 800 && MortyY + 30 < 470) {
+      setRight(true);
+      setup(false);
+      setMortyX((prev) => prev + 30);
+      setMortyY((prev) => prev + 30);
     }
   };
 
   return (
-    <Box>
-      <div className="container" tabIndex={0} onKeyDown={keyEvent} role="button">
-        <canvas className="Canvas" width="1500" height="780" ref={canvas} />
-        <canvas className="cv" width="1500" height="780" ref={canvas2} />
-      </div>
+    <Box className="container" tabIndex={0} onKeyDown={keyEvent}>
+      <canvas className="Canvas" width="1200" height="680" ref={canvas} />
+      <canvas className="cv" width="1200" height="680" ref={canvas2} />
     </Box>
   );
 };

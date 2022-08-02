@@ -1,5 +1,5 @@
-import snakeR from '../mortyImages/snake.png';
-import snakeL from '../mortyImages/snake-left.png';
+import snakeR from 'images/game/mini/snake.png';
+import snakeL from 'images/game/mini/snake-left.png';
 
 type Params = {
   context: CanvasRenderingContext2D | null | undefined,

@@ -1,26 +1,46 @@
-import mortyUP from '../mortyImages/morty-up/0.gif';
-import mortyDOWN from '../mortyImages/transaction/70.gif';
+import mortyUP from 'images/game/mini/morty-up.gif';
+import mortyRightUP from 'images/game/mini/morty-right-up.gif';
+import mortyDOWN from 'images/game/mini/morty-down.gif';
+import mortyRightDOWN from 'images/game/mini/morty-right-down.gif';
 
 type Params = {
   context: CanvasRenderingContext2D | null | undefined,
   x: number,
   y: number,
-  up: boolean
+  up: boolean,
+  right: boolean,
 }
-
-// snake 350
 
 type DrawMorty = (params: Params) => void
 
-const mortyUp = new Image(333, 480);
+const mortyUp = new Image(166, 240);
 mortyUp.src = mortyUP;
 
-const mortyDown = new Image(333, 480);
+const mortyRightUp = new Image(166, 240);
+mortyRightUp.src = mortyRightUP;
+
+const mortyDown = new Image(166, 240);
 mortyDown.src = mortyDOWN;
 
+const mortyRightDown = new Image(166, 240);
+mortyRightDown.src = mortyRightDOWN;
+
+const rightImage = {
+  up: mortyRightUp,
+  down: mortyRightDown,
+};
+
+const leftImage = {
+  up: mortyUp,
+  down: mortyDown,
+};
+
 export const drawMorty: DrawMorty = ({
-  context, x, y, up,
+  context, x, y, up, right,
 }) => {
-  const image = up ? mortyUp : mortyDown;
+  const imageObj = right ? rightImage : leftImage;
+  const key = up ? 'up' : 'down';
+
+  const image = imageObj[key];
   context?.drawImage(image, x, y);
 };
