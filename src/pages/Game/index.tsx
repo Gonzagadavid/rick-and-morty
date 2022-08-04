@@ -1,6 +1,7 @@
+/* eslint-disable react/no-array-index-key */
 import { Box } from '@mui/material';
 import {
-  FC, KeyboardEvent, useEffect, useRef, useState,
+  FC, KeyboardEvent, useCallback, useEffect, useRef, useState,
 } from 'react';
 import { drawMorty } from './functions/drawMorty';
 import { Snake } from './Snake';
@@ -8,6 +9,7 @@ import './style.css';
 
 const Game: FC = () => {
   const canvas = useRef<HTMLCanvasElement>(null);
+  const [start, _setStart] = useState(false);
   const [up, setup] = useState(true);
   const [number, _setNumber] = useState(1);
   const [right, setRight] = useState(false);
@@ -19,7 +21,7 @@ const Game: FC = () => {
     drawMorty({
       context, x: MortyX, y: MortyY, up, right,
     });
-  }, [MortyX, MortyY, up, right]);
+  }, [MortyX, MortyY, up, right, start]);
 
   const keyEvent = (event:KeyboardEvent<HTMLDivElement>) => {
     if ((event.code === 'ArrowUp' || event.code === 'Numpad8') && MortyY - 30 > -40) {
@@ -66,11 +68,21 @@ const Game: FC = () => {
     }
   };
 
+  const changeStart = useCallback(() => {
+    _setStart(true);
+  }, []);
+
   return (
-    <Box className="container" tabIndex={0} onKeyDown={keyEvent}>
+    <Box className="container" tabIndex={0} onKeyDown={keyEvent} onClick={changeStart}>
       <canvas className="Canvas" width="1200" height="680" ref={canvas} />
-      {Array(number).fill('').map((_) => (
-        <Snake />
+      { start && Array(number).fill('').map((_, index) => (
+        <Snake
+          key={index.toString()}
+          mortyX={MortyX}
+          mortyY={MortyY}
+          setStart={_setStart}
+          start={start}
+        />
       ))}
     </Box>
   );
