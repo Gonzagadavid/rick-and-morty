@@ -3,13 +3,18 @@ import { Box } from '@mui/material';
 import {
   FC, KeyboardEvent, useCallback, useEffect, useRef, useState,
 } from 'react';
+import gameOverImg from 'images/game/gameOver.png';
 import { drawMorty } from './functions/drawMorty';
 import { Snake } from './Snake';
 import './style.css';
 
+const gameOverScreen = new Image();
+gameOverScreen.src = gameOverImg;
+
 const Game: FC = () => {
   const canvas = useRef<HTMLCanvasElement>(null);
-  const [start, _setStart] = useState(false);
+  const [start, setStart] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
   const [up, setup] = useState(true);
   const [number, _setNumber] = useState(1);
   const [right, setRight] = useState(false);
@@ -26,11 +31,13 @@ const Game: FC = () => {
   const checkCollision = useCallback((x: number, y: number) => {
     if (x + 140 > MortyX + 60 && x + 40 < MortyX + 120
       && y + 10 > MortyY + 10 && MortyY + 220 > y + 60) {
-      _setStart(false);
+      setStart(false);
+      setGameOver(true);
     }
   }, [MortyX, MortyY]);
 
   const keyEvent = (event:KeyboardEvent<HTMLDivElement>) => {
+    if (gameOver) return;
     if ((event.code === 'ArrowUp' || event.code === 'Numpad8') && MortyY - 30 > -40) {
       setup(true);
       setMortyY((prev) => prev - 30);
@@ -75,8 +82,15 @@ const Game: FC = () => {
     }
   };
 
+  useEffect(() => {
+    if (!gameOver) return;
+    context?.drawImage(gameOverScreen, 0, 0, 1200, 680);
+  }, [gameOver]);
+
   const changeStart = useCallback(() => {
-    _setStart(true);
+    context?.clearRect(0, 0, 1200, 680);
+    setStart(true);
+    setGameOver(false);
   }, []);
 
   return (
