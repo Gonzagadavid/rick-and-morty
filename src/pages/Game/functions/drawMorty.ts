@@ -15,7 +15,6 @@ type DrawMorty = (params: Params) => void
 
 const mortyUp = new Image(166, 240);
 mortyUp.src = mortyUP;
-
 const mortyRightUp = new Image(166, 240);
 mortyRightUp.src = mortyRightUP;
 

@@ -23,6 +23,13 @@ const Game: FC = () => {
     });
   }, [MortyX, MortyY, up, right, start]);
 
+  const checkCollision = useCallback((x: number, y: number) => {
+    if (x + 140 > MortyX + 60 && x + 40 < MortyX + 120
+      && y + 10 > MortyY + 10 && MortyY + 220 > y + 60) {
+      _setStart(false);
+    }
+  }, [MortyX, MortyY]);
+
   const keyEvent = (event:KeyboardEvent<HTMLDivElement>) => {
     if ((event.code === 'ArrowUp' || event.code === 'Numpad8') && MortyY - 30 > -40) {
       setup(true);
@@ -78,10 +85,7 @@ const Game: FC = () => {
       { start && Array(number).fill('').map((_, index) => (
         <Snake
           key={index.toString()}
-          mortyX={MortyX}
-          mortyY={MortyY}
-          setStart={_setStart}
-          start={start}
+          setStart={checkCollision}
         />
       ))}
     </Box>
