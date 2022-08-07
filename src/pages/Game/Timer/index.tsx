@@ -9,9 +9,12 @@ interface TimerProps {
   start: boolean,
   time: number,
   setTime: Dispatch<SetStateAction<number>>
+  level: number
 }
 
-const TimerComponent:FC<TimerProps> = ({ start, time, setTime }) => {
+const TimerComponent:FC<TimerProps> = ({
+  start, time, setTime, level,
+}) => {
   const interval = useRef(setInterval(() => {}, 0));
 
   useEffect(() => {
@@ -34,6 +37,7 @@ const TimerComponent:FC<TimerProps> = ({ start, time, setTime }) => {
   const seconds = time % 60 > 9 ? time % 60 : `0${time % 60}`;
   return (
     <Box sx={styles.container}>
+      <Typography fontSize={100}>{`Level: ${level}`}</Typography>
       <Typography fontSize={100}>{`${minutes}: ${seconds}`}</Typography>
     </Box>
   );

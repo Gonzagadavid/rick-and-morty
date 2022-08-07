@@ -16,7 +16,7 @@ const Game: FC = () => {
   const [time, setTime] = useState(0);
   const [start, setStart] = useState(false);
   const [gameOver, setGameOver] = useState(false);
-  const [number, setNumber] = useState(1);
+  const [level, setLevel] = useState(1);
   const context = canvas.current?.getContext('2d');
   const { MortyX, MortyY, keyEvent } = useMortyMove({ context, start, gameOver });
 
@@ -34,8 +34,8 @@ const Game: FC = () => {
   }, [gameOver]);
 
   useEffect(() => {
-    if (time % 10 === 0) {
-      setNumber(1 + time / 10);
+    if (time % 20 === 0) {
+      setLevel(1 + time / 20);
     }
   }, [time]);
 
@@ -50,7 +50,7 @@ const Game: FC = () => {
     <Box className="Page">
       <Box className="container" tabIndex={0} onKeyDown={keyEvent} onClick={changeStart}>
         <canvas className="Canvas" width="1200" height="680" ref={canvas} />
-        { start && Array(number).fill('').map((_, index) => (
+        { start && Array(level).fill('').map((_, index) => (
           <Snake
             key={index.toString()}
             setStart={checkCollision}
@@ -58,7 +58,7 @@ const Game: FC = () => {
         ))}
       </Box>
       <Box>
-        <Timer time={time} setTime={setTime} start={start} />
+        <Timer time={time} setTime={setTime} start={start} level={level} />
       </Box>
     </Box>
   );
