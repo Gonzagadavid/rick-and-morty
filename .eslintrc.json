@@ -62,7 +62,8 @@
         "@typescript-eslint/no-shadow": ["off"],
         "react/no-unused-prop-types": "off",
         "react/require-default-props": "off",
-        "jsx-a11y/no-noninteractive-tabindex": "off"
+        "jsx-a11y/no-noninteractive-tabindex": "off",
+        "react/no-array-index-key": "off"
     },
     "settings": {
         "import/resolver": {
