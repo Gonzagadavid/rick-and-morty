@@ -5,6 +5,13 @@
   position: relative;
 }
 
+.Page {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100vw;
+}
+
 .Image {
   background-image: url('../../images/gifs/morty.gif');
 }
@@ -15,5 +22,4 @@
 
 .Snake {
   position: absolute; 
-  background-color: 'red';
 }

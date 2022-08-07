@@ -4,7 +4,6 @@ import {
 import { drawSnake } from '../functions/drawSnake';
 import '../style.css';
 
-const randomSnakeX = () => Math.round(Math.random() * 1000);
 const randomSnakeY = () => Math.round(Math.random() * 450);
 
 interface SnakeProps {
@@ -13,7 +12,7 @@ interface SnakeProps {
 
 const SnakeComponent: FC<SnakeProps> = ({ setStart }) => {
   const canvas = useRef<HTMLCanvasElement>(null);
-  const [snakeX, setSnakeX] = useState(randomSnakeX());
+  const [snakeX, setSnakeX] = useState(10);
   const [snakeY, setSnakeY] = useState(randomSnakeY());
   const [snakeUp, setSnakeUp] = useState(false);
   const [snakeLeft, setSnakeLeft] = useState(false);
@@ -23,7 +22,7 @@ const SnakeComponent: FC<SnakeProps> = ({ setStart }) => {
     if (snakeX > 1050) setSnakeLeft(true);
     setStart(snakeX, snakeY);
     if (snakeX < -20) setSnakeLeft(false);
-    if (snakeY > 480) setSnakeUp(true);
+    if (snakeY > 570) setSnakeUp(true);
     if (snakeY < -20) setSnakeUp(false);
     context?.clearRect(snakeX - 50, snakeY - 80, 400, 500);
     drawSnake({
