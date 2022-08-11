@@ -1,0 +1,11 @@
+.Image {
+  background-image: url('../../images/gifs/morty.gif');
+}
+.Canvas {
+  background-image: url('../../images/gifs/Space.gif');
+  background-position: center;
+}
+
+.Snake {
+  position: absolute; 
+}
