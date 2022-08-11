@@ -8,6 +8,7 @@ import { START_GAME } from 'constants/strings';
 import { Snake } from './Snake';
 import './style.css';
 import { useMortyMove } from './hooks/useMortyMove';
+import { styles } from './styles';
 
 const gameOverScreen = new Image();
 gameOverScreen.src = gameOverImg;
@@ -32,6 +33,11 @@ const Game: FC = () => {
   useEffect(() => {
     if (!gameOver) return;
     context?.drawImage(gameOverScreen, 0, 0, 1200, 680);
+    if (context) {
+      context.fillStyle = 'white';
+      context.font = '100px Arial';
+    }
+    context?.fillText('Click to restat', 100, 100);
   }, [gameOver]);
 
   useEffect(() => {
@@ -41,15 +47,17 @@ const Game: FC = () => {
   }, [time]);
 
   const changeStart = useCallback(() => {
-    context?.clearRect(0, 0, 1200, 680);
-    setTime(0);
-    setStart(true);
-    setGameOver(false);
-  }, [context]);
+    if (!start) {
+      context?.clearRect(0, 0, 1200, 680);
+      setTime(0);
+      setStart(true);
+      setGameOver(false);
+    }
+  }, [context, start]);
 
   return (
-    <Box className="Page">
-      <Box className="container" tabIndex={0} onKeyDown={keyEvent} onClick={changeStart}>
+    <Box sx={styles.page}>
+      <Box sx={styles.container} tabIndex={0} onKeyDown={keyEvent} onClick={changeStart}>
         <canvas className="Canvas" width="1200" height="680" ref={canvas} />
         { start && Array(level).fill('').map((_, index) => (
           <Snake
@@ -57,7 +65,7 @@ const Game: FC = () => {
             setStart={checkCollision}
           />
         ))}
-        {!start && !gameOver && <Typography className="StartMessage">{START_GAME}</Typography>}
+        {!start && !gameOver && <Typography sx={styles.startMessage}>{START_GAME}</Typography>}
       </Box>
       <Box>
         <Timer time={time} setTime={setTime} start={start} level={level} />
