@@ -23,3 +23,9 @@
 .Snake {
   position: absolute; 
 }
+
+.StartMessage {
+  color: white;
+  position: fixed;
+  font-size: 100px;
+}

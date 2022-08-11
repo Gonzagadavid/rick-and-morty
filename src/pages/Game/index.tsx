@@ -1,9 +1,10 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import {
   FC, useCallback, useEffect, useRef, useState,
 } from 'react';
 import gameOverImg from 'images/game/gameOver.png';
 import { Timer } from 'pages/Game/Timer';
+import { START_GAME } from 'constants/strings';
 import { Snake } from './Snake';
 import './style.css';
 import { useMortyMove } from './hooks/useMortyMove';
@@ -56,6 +57,7 @@ const Game: FC = () => {
             setStart={checkCollision}
           />
         ))}
+        {!start && !gameOver && <Typography className="StartMessage">{START_GAME}</Typography>}
       </Box>
       <Box>
         <Timer time={time} setTime={setTime} start={start} level={level} />
