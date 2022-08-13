@@ -1,3 +1,5 @@
+import { Theme } from '@mui/material';
+
 export const styles = {
   container: {
     display: 'flex',
@@ -15,5 +17,6 @@ export const styles = {
     color: 'white',
     position: 'fixed',
     fontSize: '100px',
+    fontFamily: ((theme: Theme) => theme.typography.h2),
   },
 };

@@ -8,4 +8,7 @@ export const styles = {
     justifyContent: 'center',
     color: (theme: Theme) => theme.palette.secondary.main,
   },
+  text: {
+    fontSize: (theme: Theme) => theme.spacing(100),
+  },
 };

@@ -37,8 +37,8 @@ const TimerComponent:FC<TimerProps> = ({
   const seconds = time % 60 > 9 ? time % 60 : `0${time % 60}`;
   return (
     <Box sx={styles.container}>
-      <Typography fontSize={100}>{`Level: ${level}`}</Typography>
-      <Typography fontSize={100}>{`${minutes}: ${seconds}`}</Typography>
+      <Typography sx={styles.text}>{`Level: ${level}`}</Typography>
+      <Typography sx={styles.text}>{`${minutes}: ${seconds}`}</Typography>
     </Box>
   );
 };

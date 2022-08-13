@@ -1,14 +1,14 @@
-import { Box, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 import {
   FC, useCallback, useEffect, useRef, useState,
 } from 'react';
 import gameOverImg from 'images/game/gameOver.png';
 import { Timer } from 'pages/Game/Timer';
-import { START_GAME } from 'constants/strings';
 import { Snake } from './Snake';
 import './style.css';
 import { useMortyMove } from './hooks/useMortyMove';
 import { styles } from './styles';
+import { StartContainer } from './StartContainer';
 
 const gameOverScreen = new Image();
 gameOverScreen.src = gameOverImg;
@@ -34,10 +34,12 @@ const Game: FC = () => {
     if (!gameOver) return;
     context?.drawImage(gameOverScreen, 0, 0, 1200, 680);
     if (context) {
-      context.fillStyle = 'white';
-      context.font = '100px Arial';
+      context.fillStyle = '#00f53f';
+      context.font = '70px Rock Salt';
+      context?.fillText('Game Over', 40, 100);
+      context.font = '40px Rock Salt';
+      context?.fillText('Click to restat', 50, 400);
     }
-    context?.fillText('Click to restat', 100, 100);
   }, [gameOver]);
 
   useEffect(() => {
@@ -65,7 +67,7 @@ const Game: FC = () => {
             setStart={checkCollision}
           />
         ))}
-        {!start && !gameOver && <Typography sx={styles.startMessage}>{START_GAME}</Typography>}
+        {!start && !gameOver && <StartContainer />}
       </Box>
       <Box>
         <Timer time={time} setTime={setTime} start={start} level={level} />

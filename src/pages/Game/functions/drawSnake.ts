@@ -8,8 +8,6 @@ type Params = {
   up: boolean
 }
 
-// snake 350
-
 type DrawSnake = (params: Params) => void
 
 const snakeRight = new Image(350, 350);
