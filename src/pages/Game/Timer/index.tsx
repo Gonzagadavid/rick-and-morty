@@ -12,6 +12,10 @@ interface TimerProps {
   level: number
   topLevel: { level: number}
 }
+const INTERVAL = 1000;
+const INCREMENT = 1;
+const TIME_CONVERT = 60;
+const UNIT_MAX = 9;
 
 const TimerComponent:FC<TimerProps> = ({
   start, time, setTime, level, topLevel,
@@ -21,8 +25,8 @@ const TimerComponent:FC<TimerProps> = ({
   useEffect(() => {
     if (start) {
       interval.current = setInterval(() => {
-        setTime((prev) => prev + 1);
-      }, 1000);
+        setTime((prev) => prev + INCREMENT);
+      }, INTERVAL);
     }
 
     return () => clearInterval(interval.current);
@@ -34,8 +38,8 @@ const TimerComponent:FC<TimerProps> = ({
     }
   }, [start]);
 
-  const minutes = time / 60 > 9 ? Math.floor(time / 60) : `0${Math.floor(time / 60)}`;
-  const seconds = time % 60 > 9 ? time % 60 : `0${time % 60}`;
+  const minutes = time / TIME_CONVERT > UNIT_MAX ? Math.floor(time / TIME_CONVERT) : `0${Math.floor(time / TIME_CONVERT)}`;
+  const seconds = time % TIME_CONVERT > UNIT_MAX ? time % TIME_CONVERT : `0${time % TIME_CONVERT}`;
   return (
     <Box sx={styles.container}>
       <Typography sx={styles.text}>{`Level: ${level}`}</Typography>
