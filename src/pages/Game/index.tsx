@@ -9,6 +9,7 @@ import './style.css';
 import { useMortyMove } from './hooks/useMortyMove';
 import { styles } from './styles';
 import { StartContainer } from './StartContainer';
+import { useTopLevel } from './hooks/useTopLevel';
 
 const gameOverScreen = new Image();
 gameOverScreen.src = gameOverImg;
@@ -19,6 +20,7 @@ const Game: FC = () => {
   const [start, setStart] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [level, setLevel] = useState(1);
+  const { topLevel, changeTopLevel } = useTopLevel();
   const context = canvas.current?.getContext('2d');
   const { MortyX, MortyY, keyEvent } = useMortyMove({ context, start, gameOver });
 
@@ -45,6 +47,7 @@ const Game: FC = () => {
   useEffect(() => {
     if (time % 20 === 0) {
       setLevel(1 + time / 20);
+      changeTopLevel(1 + time / 20);
     }
   }, [time]);
 
@@ -70,7 +73,7 @@ const Game: FC = () => {
         {!start && !gameOver && <StartContainer />}
       </Box>
       <Box>
-        <Timer time={time} setTime={setTime} start={start} level={level} />
+        <Timer time={time} setTime={setTime} start={start} level={level} topLevel={topLevel} />
       </Box>
     </Box>
   );

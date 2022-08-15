@@ -10,10 +10,11 @@ interface TimerProps {
   time: number,
   setTime: Dispatch<SetStateAction<number>>
   level: number
+  topLevel: { level: number}
 }
 
 const TimerComponent:FC<TimerProps> = ({
-  start, time, setTime, level,
+  start, time, setTime, level, topLevel,
 }) => {
   const interval = useRef(setInterval(() => {}, 0));
 
@@ -39,6 +40,7 @@ const TimerComponent:FC<TimerProps> = ({
     <Box sx={styles.container}>
       <Typography sx={styles.text}>{`Level: ${level}`}</Typography>
       <Typography sx={styles.text}>{`${minutes}: ${seconds}`}</Typography>
+      <Typography sx={styles.text}>{`Top Level: ${topLevel.level}`}</Typography>
     </Box>
   );
 };
