@@ -7,5 +7,7 @@ export const styles = {
     justifyContent: 'space-around',
     width: (theme: Theme) => theme.percent(25),
     height: (theme: Theme) => theme.percent(25),
+    margin: 'auto',
+    flexWrap: 'wrap',
   },
 };
