@@ -1,31 +1,35 @@
 import { Theme } from '@mui/material';
 
 export const styles = {
-  container: {
+  container: (theme: Theme) => ({
     display: 'flex',
     alignItems: 'end',
     justifyContent: 'center',
-    width: (theme: Theme) => theme.percent(25),
-    height: (theme: Theme) => theme.spacing([15]),
-    margin: (theme: Theme) => theme.spacing([10]),
-  },
-  input: {
-    width: (theme: Theme) => theme.spacing([100]),
+    width: {
+      xs: theme.spacing([80]),
+      sm: theme.spacing([100]),
+      lg: theme.spacing([130]),
+    },
+    height: theme.spacing([15]),
+    margin: theme.spacing([10]),
+  }),
+  input: (theme: Theme) => ({
+    width: theme.spacing([100]),
     '& .MuiOutlinedInput-root': {
       fontSize: '1.5rem',
-      padding: (theme: Theme) => theme.spacing([2]),
-      height: (theme: Theme) => theme.spacing([10]),
-      width: (theme: Theme) => theme.percent(25),
-      border: (theme: Theme) => `solid 2px ${theme.palette.primary.main}`,
-      borderRadius: (theme: Theme) => theme.spacing([2, 0, 0, 2]),
+      padding: theme.spacing([2]),
+      height: theme.spacing([10]),
+      width: theme.percent(25),
+      border: `solid 2px ${theme.palette.primary.main}`,
+      borderRadius: theme.spacing([2, 0, 0, 2]),
       '&:hover fieldset': {
-        border: (theme: Theme) => `solid 1px ${theme.palette.primary.main}`,
+        border: `solid 1px ${theme.palette.primary.main}`,
       },
       '&:focus fieldset': {
         border: 'none',
       },
     },
-  },
+  }),
   button: {
     borderRadius: (theme: Theme) => theme.spacing([0, 2, 2, 0]),
     height: (theme: Theme) => theme.spacing([10]),
