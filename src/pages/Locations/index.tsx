@@ -45,7 +45,7 @@ const Locations:FC = () => {
   }, [setFilter]);
 
   const locations = useMemo(() => (
-    data && data?.locations && data.locations.results
+    data && data?.locations && data.locations.results?.length
       ? data.locations.results.map((location, index: number) => (
         <AccordionLocation
           key={location?.id}

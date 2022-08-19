@@ -43,7 +43,7 @@ export const CharactersPage:FC = () => {
   }, [setFilter]);
 
   const cards = useMemo(() => (
-    data && data.characters && data.characters.results
+    data && data.characters && data.characters.results?.length
       ? data.characters.results.map((character) => (
         <Link to={`/character/${character?.id}`} key={character?.id}>
           <CardComponent name={character?.name ?? ''} image={character?.image ?? ''} />

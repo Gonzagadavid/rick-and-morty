@@ -1,4 +1,5 @@
 import { Loading } from 'components/Loading';
+import { NotFoundPage } from 'pages/NotFound';
 import { FC, lazy, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
@@ -29,6 +30,7 @@ export const RoutersComponent: FC = () => (
       {lazyRoutes.map(({ route, component: Component }) => (
         <Route key={route} path={route} element={<Component />} />
       ))}
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   </Suspense>
 );
