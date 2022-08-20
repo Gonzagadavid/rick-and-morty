@@ -17,6 +17,7 @@ export const PaginationCompoent: FC<PaginationProps> = ({ count, page, onChange 
       showLastButton
       onChange={onChange}
       color="secondary"
+      size="small"
     />
   </Box>
 );

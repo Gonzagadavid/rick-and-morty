@@ -11,7 +11,7 @@ export const styles = {
       lg: theme.spacing([130]),
     },
     height: theme.spacing([15]),
-    margin: theme.spacing([10]),
+    margin: theme.spacing([10, 0]),
   }),
   input: (theme: Theme) => ({
     width: theme.spacing([100]),
