@@ -4,12 +4,17 @@ import {
 } from 'react';
 import gameOverImg from 'images/game/gameOver.png';
 import { Timer } from 'pages/Game/Timer';
+import { makeVar } from '@apollo/client';
 import { Snake } from './Snake';
 import './style.css';
 import { useMortyMove } from './hooks/useMortyMove';
 import { styles } from './styles';
 import { StartContainer } from './StartContainer';
 import { useTopLevel } from './hooks/useTopLevel';
+
+export const snakePosition = makeVar<{
+  x: number, y: number, left: boolean
+}>({ x: 0, y: 0, left: false });
 
 const gameOverScreen = new Image();
 gameOverScreen.src = gameOverImg;
@@ -24,7 +29,8 @@ const Game: FC = () => {
   const context = canvas.current?.getContext('2d');
   const { MortyX, MortyY, keyEvent } = useMortyMove({ context, start, gameOver });
 
-  const checkCollision = useCallback((x: number, y: number) => {
+  const checkCollision = useCallback((x: number, y: number, left: boolean) => {
+    snakePosition({ x, y, left });
     if (x + 140 > MortyX + 60 && x + 40 < MortyX + 120
       && y + 10 > MortyY + 10 && MortyY + 220 > y + 60) {
       setStart(false);

@@ -1,13 +1,13 @@
+import { useReactiveVar } from '@apollo/client';
 import {
   FC, memo, useEffect, useRef, useState,
 } from 'react';
+import { snakePosition } from '..';
 import { drawSnake } from '../functions/drawSnake';
 import '../style.css';
 
-const randomSnakeY = () => Math.round(Math.random() * 450);
-
 interface SnakeProps {
-  setStart: (x: number, y: number) => void,
+  setStart: (x: number, y: number, left: boolean) => void,
 }
 
 const MAX_SNAKE_X = 1050;
@@ -21,16 +21,17 @@ const SNAKE_WIDTH = 400;
 const SNAKE_HEIGHT = 500;
 
 const SnakeComponent: FC<SnakeProps> = ({ setStart }) => {
+  const { x: xInit, y: yInit, left } = useReactiveVar(snakePosition);
   const canvas = useRef<HTMLCanvasElement>(null);
-  const [snakeX, setSnakeX] = useState(10);
-  const [snakeY, setSnakeY] = useState(randomSnakeY());
+  const [snakeX, setSnakeX] = useState(xInit);
+  const [snakeY, setSnakeY] = useState(yInit);
   const [snakeUp, setSnakeUp] = useState(false);
-  const [snakeLeft, setSnakeLeft] = useState(false);
+  const [snakeLeft, setSnakeLeft] = useState(!left);
   const interval = useRef(setInterval(() => {}, 0));
   const context = canvas.current?.getContext('2d');
   useEffect(() => {
     if (snakeX > MAX_SNAKE_X) setSnakeLeft(true);
-    setStart(snakeX, snakeY);
+    setStart(snakeX, snakeY, snakeLeft);
     if (snakeX < MIN_SNAKE) setSnakeLeft(false);
     if (snakeY > MAX_SNAKE_Y) setSnakeUp(true);
     if (snakeY < MIN_SNAKE) setSnakeUp(false);
