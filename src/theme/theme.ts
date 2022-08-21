@@ -56,7 +56,7 @@ export const lightTheme = createTheme({
       fontFamily: 'Rock Salt',
     },
   },
-  spacing: (values) => (Array.isArray(values) ? values.map((value) => `${value * 4}px`).join(' ') : values),
+  spacing: (values) => (Array.isArray(values) ? values.map((value) => `${value * 4}px`).join(' ') : `${values}px`),
   shape: {
     borderRadius: 4,
   },
@@ -102,7 +102,7 @@ export const darkTheme = createTheme({
       fontFamily: 'Rock Salt',
     },
   },
-  spacing: (values) => (Array.isArray(values) ? values.map((value) => `${value * 4}px`).join(' ') : values),
+  spacing: (values) => (Array.isArray(values) ? values.map((value) => `${value * 4}px`).join(' ') : `${values}px`),
   shape: {
     borderRadius: 4,
   },
