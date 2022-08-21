@@ -4,13 +4,13 @@ import {
 import { FIVE, NINE, TWENTY } from 'constants/numbers';
 import { EMPTY } from 'constants/strings';
 import { useMemo } from 'react';
-import { styles } from './styles';
+import { styles } from '../styles';
 
 export const SkeletonCharacter = () => {
   const chips = useMemo(() => (
     Array(NINE).fill(EMPTY).map((_, index) => (
       <Skeleton key={`${index + TWENTY}`} sx={styles.chip}>
-        <Chip sx={styles.chip} />
+        <Chip sx={styles.chipSkeleton} />
       </Skeleton>
     ))
   ), []);
