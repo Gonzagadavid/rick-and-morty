@@ -7,7 +7,7 @@ export const styles = {
     flexDirection: 'column',
     justifyContent: 'flex-start',
     position: 'fixed',
-    top: ((theme: Theme) => theme.spacing(25)),
+    top: ((theme: Theme) => theme.spacing(115)),
   },
   startMessage: {
     color: ((theme: Theme) => theme.palette.secondary.main),

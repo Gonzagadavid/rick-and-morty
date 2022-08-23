@@ -1,4 +1,6 @@
-import { KeyboardEvent, useEffect, useState } from 'react';
+import {
+  KeyboardEvent, useCallback, useEffect, useState,
+} from 'react';
 import { drawMorty } from '../functions/drawMorty';
 
 type MortyMoveParams = {
@@ -7,11 +9,22 @@ type MortyMoveParams = {
   gameOver: boolean,
 }
 
+const initialMorty = {
+  xInit: 1000,
+  yInit: 230,
+  rightInit: false,
+  upInit: true,
+};
+
 export const useMortyMove = ({ context, start, gameOver } : MortyMoveParams) => {
-  const [up, setup] = useState(true);
-  const [right, setRight] = useState(false);
-  const [MortyX, setMortyX] = useState(1000);
-  const [MortyY, setMortyY] = useState(230);
+  const {
+    xInit, yInit, rightInit, upInit,
+  } = initialMorty;
+
+  const [up, setup] = useState(upInit);
+  const [right, setRight] = useState(rightInit);
+  const [MortyX, setMortyX] = useState(xInit);
+  const [MortyY, setMortyY] = useState(yInit);
 
   useEffect(() => {
     context?.clearRect(MortyX - 50, MortyY - 50, 266, 340);
@@ -66,5 +79,14 @@ export const useMortyMove = ({ context, start, gameOver } : MortyMoveParams) => 
     }
   };
 
-  return { MortyX, MortyY, keyEvent };
+  const resetPosition = useCallback(() => {
+    setMortyX(xInit);
+    setMortyY(yInit);
+    setRight(rightInit);
+    setup(upInit);
+  }, []);
+
+  return {
+    MortyX, MortyY, keyEvent, resetPosition,
+  };
 };

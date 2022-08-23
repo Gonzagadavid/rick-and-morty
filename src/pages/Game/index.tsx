@@ -12,9 +12,11 @@ import { styles } from './styles';
 import { StartContainer } from './StartContainer';
 import { useTopLevel } from './hooks/useTopLevel';
 
+const initialSnake = { x: 10, y: 30, left: false };
+
 export const snakePosition = makeVar<{
   x: number, y: number, left: boolean
-}>({ x: 0, y: 0, left: false });
+}>(initialSnake);
 
 const gameOverScreen = new Image();
 gameOverScreen.src = gameOverImg;
@@ -27,7 +29,9 @@ const Game: FC = () => {
   const [level, setLevel] = useState(1);
   const { topLevel, changeTopLevel } = useTopLevel();
   const context = canvas.current?.getContext('2d');
-  const { MortyX, MortyY, keyEvent } = useMortyMove({ context, start, gameOver });
+  const {
+    MortyX, MortyY, keyEvent, resetPosition,
+  } = useMortyMove({ context, start, gameOver });
 
   const checkCollision = useCallback((x: number, y: number, left: boolean) => {
     snakePosition({ x, y, left });
@@ -60,6 +64,8 @@ const Game: FC = () => {
   const changeStart = useCallback(() => {
     if (!start) {
       context?.clearRect(0, 0, 1200, 680);
+      resetPosition();
+      snakePosition(initialSnake);
       setTime(0);
       setStart(true);
       setGameOver(false);

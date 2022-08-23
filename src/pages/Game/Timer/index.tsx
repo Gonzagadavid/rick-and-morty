@@ -1,8 +1,9 @@
-import { Typography, Box } from '@mui/material';
+import { Typography, Box, Avatar } from '@mui/material';
 import {
   Dispatch,
   FC, SetStateAction, useEffect, useRef,
 } from 'react';
+import arrowKeys from 'images/controls.png';
 import { styles } from './styles';
 
 interface TimerProps {
@@ -45,6 +46,8 @@ const TimerComponent:FC<TimerProps> = ({
       <Typography sx={styles.text}>{`Level: ${level}`}</Typography>
       <Typography sx={styles.text}>{`${minutes}: ${seconds}`}</Typography>
       <Typography sx={styles.text}>{`Top Level: ${topLevel.level}`}</Typography>
+      <Avatar sx={styles.image} src={arrowKeys} variant="square" alt="controls" />
+
     </Box>
   );
 };

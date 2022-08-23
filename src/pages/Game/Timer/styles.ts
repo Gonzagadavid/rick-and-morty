@@ -9,6 +9,10 @@ export const styles = {
     color: (theme: Theme) => theme.palette.secondary.main,
   },
   text: {
-    fontSize: (theme: Theme) => theme.spacing(100),
+    fontSize: (theme: Theme) => theme.spacing(90),
+  },
+  image: {
+    width: (theme: Theme) => theme.spacing(325),
+    height: (theme: Theme) => theme.spacing(325),
   },
 };
