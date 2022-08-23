@@ -12,6 +12,7 @@ export const styles = {
     alignItems: 'center',
     justifyContent: 'space-around',
     width: '100vw',
+    marginTop: (theme: Theme) => theme.spacing(50),
   },
   startMessage: {
     color: 'white',

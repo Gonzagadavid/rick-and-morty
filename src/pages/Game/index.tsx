@@ -1,10 +1,11 @@
-import { Box } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 import {
   FC, useCallback, useEffect, useRef, useState,
 } from 'react';
 import gameOverImg from 'images/game/gameOver.png';
 import { Timer } from 'pages/Game/Timer';
 import { makeVar } from '@apollo/client';
+import useWindowDimensions from 'hooks/useWindowDimensions';
 import { Snake } from './Snake';
 import './style.css';
 import { useMortyMove } from './hooks/useMortyMove';
@@ -29,6 +30,7 @@ const Game: FC = () => {
   const [level, setLevel] = useState(1);
   const { topLevel, changeTopLevel } = useTopLevel();
   const context = canvas.current?.getContext('2d');
+  const [width, height] = useWindowDimensions();
   const {
     MortyX, MortyY, keyEvent, resetPosition,
   } = useMortyMove({ context, start, gameOver });
@@ -73,21 +75,31 @@ const Game: FC = () => {
   }, [context, start]);
 
   return (
-    <Box sx={styles.page}>
-      <Box sx={styles.container} tabIndex={0} onKeyDown={keyEvent} onClick={changeStart}>
-        <canvas className="Canvas" width="1200" height="680" ref={canvas} />
-        { start && Array(level).fill('').map((_, index) => (
-          <Snake
-            key={index.toString()}
-            setStart={checkCollision}
-          />
-        ))}
-        {!start && !gameOver && <StartContainer />}
-      </Box>
-      <Box>
-        <Timer time={time} setTime={setTime} start={start} level={level} topLevel={topLevel} />
-      </Box>
-    </Box>
+    width > 1600 && height > 800
+      ? (
+        <Box sx={styles.page}>
+          <Box sx={styles.container} tabIndex={0} onKeyDown={keyEvent} onClick={changeStart}>
+            <canvas className="Canvas" width="1200" height="680" ref={canvas} />
+            { start && Array(level).fill('').map((_, index) => (
+              <Snake
+                key={index.toString()}
+                setStart={checkCollision}
+              />
+            ))}
+            {!start && !gameOver && <StartContainer />}
+          </Box>
+          <Box>
+            <Timer time={time} setTime={setTime} start={start} level={level} topLevel={topLevel} />
+          </Box>
+        </Box>
+      )
+      : (
+        <Box>
+          <Typography>
+            minimum screen 1600 wide
+          </Typography>
+        </Box>
+      )
   );
 };
 
