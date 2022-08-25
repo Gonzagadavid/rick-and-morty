@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Avatar, Box, Typography } from '@mui/material';
 import {
   FC, useCallback, useEffect, useRef, useState,
 } from 'react';
@@ -6,6 +6,7 @@ import gameOverImg from 'images/game/gameOver.png';
 import { Timer } from 'pages/Game/Timer';
 import { makeVar } from '@apollo/client';
 import useWindowDimensions from 'hooks/useWindowDimensions';
+import rickIcon from 'images/rick-notFound.png';
 import { Snake } from './Snake';
 import './style.css';
 import { useMortyMove } from './hooks/useMortyMove';
@@ -37,8 +38,8 @@ const Game: FC = () => {
 
   const checkCollision = useCallback((x: number, y: number, left: boolean) => {
     snakePosition({ x, y, left });
-    if (x + 140 > MortyX + 60 && x + 40 < MortyX + 120
-      && y + 10 > MortyY + 10 && MortyY + 220 > y + 60) {
+    if (x + 100 > MortyX + 60 && x + 40 < MortyX + 120
+      && y + 150 > MortyY + 10 && MortyY + 220 > y + 60) {
       setStart(false);
       setGameOver(true);
     }
@@ -94,8 +95,9 @@ const Game: FC = () => {
         </Box>
       )
       : (
-        <Box>
-          <Typography>
+        <Box sx={styles.messageContainer}>
+          <Avatar src={rickIcon} variant="square" sx={styles.image} />
+          <Typography sx={styles.messageText}>
             minimum screen 1600 wide
           </Typography>
         </Box>
