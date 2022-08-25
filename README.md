@@ -28,14 +28,15 @@ The initial page contains portals to the application pages
 
 ## Characters 
 
-This page contains cards with image and name of all characters, when clicking on the card will redirected you to [Character](#character) page with details of this character
+This page contains cards with image and name of all characters, when clicking on the card will redirect you to a Character page with details of this character
 
 ![characters page](./public/assets/gifs/chacters.gif)
 
 
 ## Episodes
 
-This page contains episodes info and participating characters, when clicking on the card will redirected you to [Character](#character) page with details of this character
+This page contains episodes info and participating characters, when clicking on the card will redirect you to a [Character](#character) page with details of this character
+
 
 ![episodes page](./public/assets/gifs/episodes.gif)
 
