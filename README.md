@@ -13,6 +13,7 @@
 - [API](#API)
 - [Tecnologies](#tecnologies)
 - [Work in progress](#work-in-progress)
+- [Game](#game)
 
 # Intoduction
 
@@ -24,37 +25,50 @@ Rick and Morty application with information this animation fun, developed to pra
 
 The initial page contains portals to the application pages
 
-![home page](./public/assets/gifs/home.gif)
+<img  width="800" src="./public/assets/gifs/Home.gif"/> 
+<img  width="200" src="./public/assets/gifs/_Home.gif"/> 
 
 ## Characters 
 
 This page contains cards with image and name of all characters, when clicking on the card will redirect you to a Character page with details of this character
 
-![characters page](./public/assets/gifs/chacters.gif)
+<img  width="800" src="./public/assets/gifs/chacters.gif"/> 
+<img  width="200" src="./public/assets/gifs/_characters.gif"/> 
 
 
 ## Episodes
 
 This page contains episodes info and participating characters, when clicking on the card will redirect you to a [Character](#character) page with details of this character
 
-
-![episodes page](./public/assets/gifs/episodes.gif)
+<img  width="800" src="./public/assets/gifs/episodes.gif"/> 
+<img  width="200" src="./public/assets/gifs/_episodes.gif"/> 
 
 ## Locations 
 
 Contains characteristics of animation locations, and characters from this, when clicking on the card will redirected you to [Character](#character) page with details of this character
 
-![locations page](./public/assets/gifs/locations.gif)
+<img  width="800" src="./public/assets/gifs/locations.gif"/> 
+<img  width="200" src="./public/assets/gifs/_locations.gif"/> 
 
 ## Character
 
 This page contains character details
 
-![Character page](./public/assets/gifs/character.gif)
+<img  width="800" src="./public/assets/gifs/character.gif"/> 
+<img  width="200" src="./public/assets/gifs/_character.gif"/> 
+
+## Game
+
+Run away from the space snake, don't let it bite Morty
+
+![Game page](./public/assets/gifs/game.gif)
+<img  width="200" src="./public/assets/gifs/_game.gif"/> 
+
 
 # API
 
 This project use the amazing [Rock and Morty API](https://rickandmortyapi.com/)
+
 
 # Tecnologies
 
@@ -89,5 +103,3 @@ Deployment in [Vercel](https://vercel.com/)
 # Work in progress
 
 - Automated Tests
-- Responsiveness
-- Game Page
