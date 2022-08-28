@@ -8,7 +8,6 @@ import {
   ONE, TWENTY, TWO, ZERO,
 } from 'constants/numbers';
 import { SearchBar } from 'components/SearchBar';
-import { useLoading } from 'hooks/useLoading';
 import { ErrorMesage } from 'components/ErrorMessage';
 import { NotFound } from 'components/NotFound';
 import { useLocationQuery } from 'generated/graphql';
@@ -63,8 +62,6 @@ const Locations:FC = () => {
 
   const skeletons = useMemo(() => Array(TWENTY)
     .fill(EMPTY).map((_, index) => (<SkeletonAccordion key={`${index + ONE}`} />)), []);
-
-  useLoading(loading);
 
   return (
     <Box sx={styles.container}>

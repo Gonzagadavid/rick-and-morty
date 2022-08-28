@@ -9,3 +9,7 @@ export const FIVE = 5;
 export const NINE = 9;
 
 export const TWENTY = 20;
+
+export const FIFTY = 50;
+
+export const TWO_HUNDRED_TWENTY = 220;

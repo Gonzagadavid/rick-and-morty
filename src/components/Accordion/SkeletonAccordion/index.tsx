@@ -6,7 +6,7 @@ export const SkeletonAccordion:FC = () => (
   <Accordion sx={styles.accordionContainer}>
     <Box sx={styles.skeleton}>
       <Skeleton variant="text" sx={styles.skeletonText} />
-      <Skeleton variant="circular" width={50} height={50} />
+      <Skeleton variant="circular" sx={styles.skeletonIcon} />
     </Box>
   </Accordion>
 );
