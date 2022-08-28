@@ -10,6 +10,8 @@ export const NINE = 9;
 
 export const TWENTY = 20;
 
+export const FORTY = 40;
+
 export const FIFTY = 50;
 
 export const TWO_HUNDRED_TWENTY = 220;

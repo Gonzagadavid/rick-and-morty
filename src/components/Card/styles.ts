@@ -19,8 +19,4 @@ export const styles = {
     fontFamily: (theme: Theme) => theme.typography.fontFamily,
     fontSize: (theme: Theme) => theme.spacing([6]),
   },
-  skeletonText: {
-    width: (theme: Theme) => theme.percent(220),
-    height: (theme: Theme) => theme.percent(40),
-  },
 };

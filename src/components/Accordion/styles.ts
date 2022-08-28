@@ -72,8 +72,4 @@ export const styles = {
       height: theme.spacing(50),
     },
   }),
-  skeletonIcon: (theme: Theme) => ({
-    width: theme.spacing(15),
-    height: theme.spacing(15),
-  }),
 };
