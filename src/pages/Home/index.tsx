@@ -1,23 +1,19 @@
 import { Box } from '@mui/material';
 import { RouteCard } from 'components/RouteCard';
-import { FC, useMemo } from 'react';
+import { FC } from 'react';
 import { RouteNames } from 'routes';
 import { styles } from './styles';
 
 const { HOME, CHARACTER, ...routes } = RouteNames;
 
-const Home: FC = () => {
-  const routesList = useMemo(() => (
-    Object.entries(routes).map(([routeName, path]) => (
-      <RouteCard key={routeName} title={routeName} path={path} />
-    ))
-  ), []);
+const routesList = Object.entries(routes).map(([routeName, path]) => (
+  <RouteCard key={routeName} title={routeName} path={path} />
+));
 
-  return (
-    <Box sx={styles.container}>
-      {routesList}
-    </Box>
-  );
-};
+const Home: FC = () => (
+  <Box sx={styles.container}>
+    {routesList}
+  </Box>
+);
 
 export default Home;

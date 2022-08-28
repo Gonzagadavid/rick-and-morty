@@ -20,6 +20,9 @@ const INITIAL_FILTER = {
   name: EMPTY,
 };
 
+const skeletons = Array(TWENTY)
+  .fill(EMPTY).map((_, index) => (<SkeletonAccordion key={`${index + ONE}`} />));
+
 const Episodes = () => {
   const [page, setPageNumber] = useState(ONE);
   const [filter, setFilter] = useState(INITIAL_FILTER);
@@ -60,12 +63,6 @@ const Episodes = () => {
         />
       )) : <NotFound />
   ), [data, isExpand, setIsExpand]);
-
-  const skeletons = useMemo(
-    () => Array(TWENTY)
-      .fill(EMPTY).map((_, index) => (<SkeletonAccordion key={`${index + ONE}`} />)),
-    [],
-  );
 
   return (
     <Box sx={styles.container}>

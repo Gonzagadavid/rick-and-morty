@@ -2,7 +2,7 @@ import { Search } from '@mui/icons-material';
 import { Box, Button, TextField } from '@mui/material';
 import { EMPTY } from 'constants/strings';
 import {
-  useState, useCallback, ChangeEvent, FC, KeyboardEvent,
+  useState, useCallback, ChangeEvent, FC, KeyboardEvent, memo,
 } from 'react';
 import { styles } from './styles';
 
@@ -10,7 +10,7 @@ interface SearchBarProps {
   handleFilter: (name: string) => void
 }
 
-export const SearchBar:FC<SearchBarProps> = ({ handleFilter }) => {
+const SearchBarComponent:FC<SearchBarProps> = ({ handleFilter }) => {
   const [text, setText] = useState(EMPTY);
 
   const onChangeText = useCallback(({ target: { value } }:ChangeEvent<HTMLInputElement>) => {
@@ -34,3 +34,5 @@ export const SearchBar:FC<SearchBarProps> = ({ handleFilter }) => {
     </Box>
   );
 };
+
+export const SearchBar = memo(SearchBarComponent);

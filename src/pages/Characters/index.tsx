@@ -19,6 +19,9 @@ const INITIAL_FILTER = {
   name: EMPTY,
 };
 
+const skeletons = Array(TWENTY)
+  .fill(EMPTY).map((_, index) => (<SkeletonCard key={`${index + ONE}`} />));
+
 export const CharactersPage:FC = () => {
   const [page, setPageNumber] = useState(ONE);
   const [filter, setFilter] = useState(INITIAL_FILTER);
@@ -50,12 +53,6 @@ export const CharactersPage:FC = () => {
         </Link>
       )) : <NotFound />
   ), [data]);
-
-  const skeletons = useMemo(
-    () => Array(TWENTY)
-      .fill(EMPTY).map((_, index) => (<SkeletonCard key={`${index + ONE}`} />)),
-    [],
-  );
 
   return (
     <Box sx={styles.container}>
