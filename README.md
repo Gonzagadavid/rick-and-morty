@@ -17,7 +17,7 @@
 
 # Intoduction
 
-Rick and Morty application with information this animation fun, developed to practice React TS, Material UI, Apollo GraphQL client side
+Rick and Morty application with information and game this animation fun, developed to practice React TS, Material UI, Apollo GraphQL client side
 
 # Pages
 
