@@ -13,11 +13,16 @@ export const styles = {
 
     },
   }),
+  controlsContainer: (theme: Theme) => ({
+    display: 'flex',
+    [theme.breakpoints.down('xl')]: {
+      flexDirection: 'column',
+    },
+  }),
   text: (theme: Theme) => ({
     fontSize: theme.spacing(55),
     [theme.breakpoints.down('xl')]: {
       fontSize: theme.spacing(45),
-
     },
   }),
   image: (theme: Theme) => ({

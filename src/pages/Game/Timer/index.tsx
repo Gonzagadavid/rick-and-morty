@@ -4,6 +4,7 @@ import {
   FC, SetStateAction, useEffect, useRef,
 } from 'react';
 import arrowKeys from 'images/controls.png';
+import wasdKeys from 'images/wasd2.png';
 import { styles } from './styles';
 
 interface TimerProps {
@@ -46,8 +47,10 @@ const TimerComponent:FC<TimerProps> = ({
       <Typography sx={styles.text}>{`Level: ${level}`}</Typography>
       <Typography sx={styles.text}>{`${minutes}: ${seconds}`}</Typography>
       <Typography sx={styles.text}>{`Top Level: ${topLevel.level}`}</Typography>
-      <Avatar sx={styles.image} src={arrowKeys} variant="square" alt="controls" />
-
+      <Box sx={styles.controlsContainer}>
+        <Avatar sx={styles.image} src={wasdKeys} variant="square" alt="controls left" />
+        <Avatar sx={styles.image} src={arrowKeys} variant="square" alt="controls right" />
+      </Box>
     </Box>
   );
 };

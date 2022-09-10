@@ -58,9 +58,9 @@ const Game: FC = () => {
   }, [gameOver]);
 
   useEffect(() => {
-    if (time % 20 === 0) {
-      setLevel(1 + time / 20);
-      changeTopLevel(1 + time / 20);
+    if (time % 15 === 0) {
+      setLevel(1 + time / 15);
+      changeTopLevel(1 + time / 15);
     }
   }, [time]);
 
