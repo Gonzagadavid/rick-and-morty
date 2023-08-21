@@ -17,20 +17,20 @@
 
 # Intoduction
 
-Rick and Morty application with information and game this animation fun, developed to practice React TS, Material UI, Apollo GraphQL client side
+Rick and Morty application with information and game this animation fun, developed to practice React TS, Material UI, Apollo GraphQL client side.
 
 # Pages
 
 ## Home
 
-The initial page contains portals to the application pages
+The initial page contains portals to the application pages:
 
 <img  width="800" src="./public/assets/gifs/Home.gif"/> 
 <img  width="200" src="./public/assets/gifs/_Home.gif"/> 
 
 ## Characters 
 
-This page contains cards with image and name of all characters, when clicking on the card will redirect you to a Character page with details of this character
+This page contains cards with images and names of all characters, when clicking on the card will redirect you to a Character page with details of this character:
 
 <img  width="800" src="./public/assets/gifs/chacters.gif"/> 
 <img  width="200" src="./public/assets/gifs/_characters.gif"/> 
@@ -38,21 +38,21 @@ This page contains cards with image and name of all characters, when clicking on
 
 ## Episodes
 
-This page contains episodes info and participating characters, when clicking on the card will redirect you to a [Character](#character) page with details of this character
+This page contains episodes info and participating characters, when clicking on the card will redirect you to a [Character](#character) page with details of this character:
 
 <img  width="800" src="./public/assets/gifs/episodes.gif"/> 
 <img  width="200" src="./public/assets/gifs/_episodes.gif"/> 
 
 ## Locations 
 
-Contains characteristics of animation locations, and characters from this, when clicking on the card will redirected you to [Character](#character) page with details of this character
+Contains characteristics of animation locations, and characters from this, when clicking on the card will redirect you to [Character](#character) page with details of this character:
 
 <img  width="800" src="./public/assets/gifs/locations.gif"/> 
 <img  width="200" src="./public/assets/gifs/_locations.gif"/> 
 
 ## Character
 
-This page contains character details
+This page contains character details:
 
 <img  width="800" src="./public/assets/gifs/character.gif"/> 
 <img  width="200" src="./public/assets/gifs/_character.gif"/> 
@@ -67,7 +67,7 @@ Run away from the space snake, don't let it bite Morty
 
 # API
 
-This project use the amazing [Rock and Morty API](https://rickandmortyapi.com/)
+This project uses the amazing [Rock and Morty API](https://rickandmortyapi.com/).
 
 
 # Tecnologies
